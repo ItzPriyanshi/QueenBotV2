@@ -1,0 +1,11 @@
+{
+  "100001234567890": {
+    "reason": "Spamming bot commands in multiple groups.",
+    "date": "2025-09-10"
+  },
+  "100009876543210": {
+    "reason": "Abusing an exploit in the economy command.",
+    "date": "2025-10-01",
+    "toDate": "2026-10-01" 
+  }
+}
