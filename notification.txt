@@ -1,0 +1,1 @@
+ATTENTION: A critical security patch was released. Please update your bot immediately by running 'git pull' in your terminal or using bot cmd {p}update in chat. Thank you for your cooperation! - ItzPriyanshi
