@@ -1,11 +1,22 @@
+📦 Version 1.6.1
+### ⬆️ What's Changed
+- **fb-chat-api/src/listenMqtt**: fix: Crashing on vps/rdp and performance enhancement 
+- **dashboard/app.js**: fix: Unhandled getEmail fixed improvement and token recognition 
 
+### Contributors
+- <div style="display: flex; align-items: center;">
+    <a href="https://github.com/ItzPriyanshi">ItzPriyanshi&nbsp;&nbsp;</a>
+    <img src="https://github.com/ItzPriyanshi.png" width="20" height="20" style="border-radius:50%; object-fit: cover;" alt="ItzPriyanshi">
+  </div>
+
+---
 ## 📦 Version 1.6.0
 ### ⬆️ What's Changed
 - **Goat.js**: optimisation and removed google credentials requirment 
 - **utils.js**: optimisation and removed getEmail for google credentials 
 - **bot/login/login.js** fix: 2FA fix optimised for fast login 
 ### Contributors
-- <div style="display: flex; align-items: center;"><a href="https://github.com/ntkhang03">ItzPriyanshi&nbsp;&nbsp;</a> <img src="https://github.com/ItzPriyanshi.png" width="20" height="20" style="border-radius:50%; margin-top: px;" alt="ItzPriyanshi"></div>
+- <div style="display: flex; align-items: center;"><a href="https://github.com/ItzPriyanshi">ItzPriyanshi&nbsp;&nbsp;</a> <img src="https://github.com/ItzPriyanshi.png" width="20" height="20" style="border-radius:50%; margin-top: px;" alt="ItzPriyanshi"></div>
 
 ---
 ## 📦 Version 1.5.35
