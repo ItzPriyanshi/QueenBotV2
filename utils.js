@@ -9,32 +9,62 @@ const agent = new https.Agent({
 const moment = require("moment-timezone");
 const mimeDB = require("mime-db");
 const _ = require("lodash");
+const { google } = require("googleapis");
 const ora = require("ora");
 const log = require("./logger/log.js");
 const { isHexColor, colors } = require("./func/colors.js");
 const Prism = require("./func/prism.js");
 
 const { config } = global.GoatBot;
+const { gmailAccount } = config.credentials || {};
+const { clientId, clientSecret, refreshToken, apiKey: googleApiKey } = gmailAccount || {};
+
+let driveApi;
+try {
+        if (clientId && clientSecret && refreshToken) {
+                const oauth2ClientForGGDrive = new google.auth.OAuth2(clientId, clientSecret, "https://developers.google.com/oauthplayground");
+                oauth2ClientForGGDrive.setCredentials({ refresh_token: refreshToken });
+                driveApi = google.drive({
+                        version: 'v3',
+                        auth: oauth2ClientForGGDrive
+                });
+        }
+} catch (e) {}
 
 const word = [
         'A', 'Á', 'À', 'Ả', 'Ã', 'Ạ', 'a', 'á', 'à', 'ả', 'ã', 'ạ',
         'Ă', 'Ắ', 'Ằ', 'Ẳ', 'Ẵ', 'Ặ', 'ă', 'ắ', 'ằ', 'ẳ', 'ẵ', 'ặ',
         'Â', 'Ấ', 'Ầ', 'Ẩ', 'Ẫ', 'Ậ', 'â', 'ấ', 'ầ', 'ẩ', 'ẫ', 'ậ',
-        'B', 'b', 'C', 'c', 'D', 'Đ', 'd', 'đ',
+        'B', 'b',
+        'C', 'c',
+        'D', 'Đ', 'd', 'đ',
         'E', 'É', 'È', 'Ẻ', 'Ẽ', 'Ẹ', 'e', 'é', 'è', 'ẻ', 'ẽ', 'ẹ',
         'Ê', 'Ế', 'Ề', 'Ể', 'Ễ', 'Ệ', 'ê', 'ế', 'ề', 'ể', 'ễ', 'ệ',
-        'F', 'f', 'G', 'g', 'H', 'h',
+        'F', 'f',
+        'G', 'g',
+        'H', 'h',
         'I', 'Í', 'Ì', 'Ỉ', 'Ĩ', 'Ị', 'i', 'í', 'ì', 'ỉ', 'ĩ', 'ị',
-        'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n',
+        'J', 'j',
+        'K', 'k',
+        'L', 'l',
+        'M', 'm',
+        'N', 'n',
         'O', 'Ó', 'Ò', 'Ỏ', 'Õ', 'Ọ', 'o', 'ó', 'ò', 'ỏ', 'õ', 'ọ',
         'Ô', 'Ố', 'Ồ', 'Ổ', 'Ỗ', 'Ộ', 'ô', 'ố', 'ồ', 'ổ', 'ỗ', 'ộ',
         'Ơ', 'Ớ', 'Ờ', 'Ở', 'Ỡ', 'Ợ', 'ơ', 'ớ', 'ờ', 'ở', 'ỡ', 'ợ',
-        'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't',
+        'P', 'p',
+        'Q', 'q',
+        'R', 'r',
+        'S', 's',
+        'T', 't',
         'U', 'Ú', 'Ù', 'Ủ', 'Ũ', 'Ụ', 'u', 'ú', 'ù', 'ủ', 'ũ', 'ụ',
         'Ư', 'Ứ', 'Ừ', 'Ử', 'Ữ', 'Ự', 'ư', 'ứ', 'ừ', 'ử', 'ữ', 'ự',
-        'V', 'v', 'W', 'w', 'X', 'x',
+        'V', 'v',
+        'W', 'w',
+        'X', 'x',
         'Y', 'Ý', 'Ỳ', 'Ỷ', 'Ỹ', 'Ỵ', 'y', 'ý', 'ỳ', 'ỷ', 'ỹ', 'ỵ',
-        'Z', 'z', ' '
+        'Z', 'z',
+        ' '
 ];
 
 const regCheckURL = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
@@ -77,7 +107,6 @@ function setErrorUptime() {
         global.responseUptimeCurrent = global.responseUptimeError;
 }
 const defaultStderrClearLine = process.stderr.clearLine;
-
 
 function convertTime(miliSeconds, replaceSeconds = "s", replaceMinutes = "m", replaceHours = "h", replaceDays = "d", replaceMonths = "M", replaceYears = "y", notShowZero = false) {
         if (typeof replaceSeconds == 'boolean') {
@@ -522,7 +551,7 @@ async function translate(text, lang) {
 
         for (let i = 0; i < text.length; i++) {
                 const char = text[i];
-                if (word.indexOf(char) !== -1) {
+                if (word.indexOf(char) !== -1) { 
                         const lengWordNoTranslate = wordNoTranslate.length - 1;
                         if (wordNoTranslate[lengWordNoTranslate] && wordNoTranslate[lengWordNoTranslate].includes('{') && !wordNoTranslate[lengWordNoTranslate].includes('}')) {
                                 wordNoTranslate[lengWordNoTranslate] += char;
@@ -537,7 +566,7 @@ async function translate(text, lang) {
                                 lastPosition = 'wordTranslate';
                         }
                 }
-                else {
+                else { 
                         const lengWordNoTranslate = wordNoTranslate.length - 1;
                         const twoWordLast = wordNoTranslate[lengWordNoTranslate]?.slice(-2) || '';
                         if (lastPosition == 'wordNoTranslate') {
@@ -675,6 +704,162 @@ async function uploadZippyshare(stream) {
         return res.data;
 }
 
+const drive = {
+        default: driveApi,
+        parentID: "",
+        async uploadFile(fileName, mimeType, file) {
+                if (!file && typeof fileName === "string") {
+                        file = mimeType;
+                        mimeType = undefined;
+                }
+                let response;
+                try {
+                        response = (await driveApi.files.create({
+                                resource: {
+                                        name: fileName,
+                                        parents: [this.parentID]
+                                },
+                                media: {
+                                        mimeType,
+                                        body: file
+                                },
+                                fields: "*"
+                        })).data;
+                }
+                catch (err) {
+                        throw new Error(err.errors.map(e => e.message).join("\n"));
+                }
+                await utils.drive.makePublic(response.id);
+                return response;
+        },
+
+        async deleteFile(id) {
+                if (!id || typeof id !== "string")
+                        throw new Error('The first argument (id) must be a string');
+                try {
+                        await driveApi.files.delete({
+                                fileId: id
+                        });
+                        return true;
+                }
+                catch (err) {
+                        throw new Error(err.errors.map(e => e.message).join("\n"));
+                }
+        },
+
+        getUrlDownload(id = "") {
+                if (!id || typeof id !== "string")
+                        throw new Error('The first argument (id) must be a string');
+                return `https://docs.google.com/uc?id=${id}&export=download&confirm=t${googleApiKey ? `&key=${googleApiKey}` : ''}`;
+        },
+
+        async getFile(id, responseType) {
+                if (!id || typeof id !== "string")
+                        throw new Error('The first argument (id) must be a string');
+                if (!responseType)
+                        responseType = "arraybuffer";
+                if (typeof responseType !== "string")
+                        throw new Error('The second argument (responseType) must be a string');
+
+                const response = await driveApi.files.get({
+                        fileId: id,
+                        alt: 'media'
+                }, {
+                        responseType
+                });
+                const headersResponse = response.headers;
+                const fileName = headersResponse["content-disposition"]?.split('filename="')[1]?.split('"')[0] || `${utils.randomString(10)}.${utils.getExtFromMimeType(headersResponse["content-type"])}`;
+
+                if (responseType == "arraybuffer")
+                        return Buffer.from(response.data);
+                else if (responseType == "stream")
+                        response.data.path = fileName;
+
+                const file = response.data;
+
+                return file;
+        },
+
+        async getFileName(id) {
+                if (!id || typeof id !== "string")
+                        throw new Error('The first argument (id) must be a string');
+                const { fileNames: tempFileNames } = global.temp.filesOfGoogleDrive;
+                if (tempFileNames[id])
+                        return tempFileNames[id];
+                try {
+                        const { data: response } = await driveApi.files.get({
+                                fileId: id,
+                                fields: "name"
+                        });
+                        tempFileNames[id] = response.name;
+                        return response.name;
+                }
+                catch (err) {
+                        throw new Error(err.errors.map(e => e.message).join("\n"));
+                }
+        },
+
+        async makePublic(id) {
+                if (!id || typeof id !== "string")
+                        throw new Error('The first argument (id) must be a string');
+                try {
+                        await driveApi.permissions.create({
+                                fileId: id,
+                                requestBody: {
+                                        role: 'reader',
+                                        type: 'anyone'
+                                }
+                        });
+                        return id;
+                }
+                catch (err) {
+                        const error = new Error(err.errors.map(e => e.message).join("\n"));
+                        error.name = 'CAN\'T_MAKE_PUBLIC';
+                        throw new Error(err.errors.map(e => e.message).join("\n"));
+                }
+        },
+
+        async checkAndCreateParentFolder(folderName) {
+                if (!folderName || typeof folderName !== "string")
+                        throw new Error('The first argument (folderName) must be a string');
+                let parentID;
+                const { data: findParentFolder } = await driveApi.files.list({
+                        q: `name="${folderName}" and mimeType="application/vnd.google-apps.folder" and trashed=false`,
+                        fields: '*'
+                });
+                const parentFolder = findParentFolder.files.find(i => i.ownedByMe);
+                if (!parentFolder) {
+                        const { data } = await driveApi.files.create({
+                                requestBody: {
+                                        name: folderName,
+                                        mimeType: 'application/vnd.google-apps.folder'
+                                }
+                        });
+                        await driveApi.permissions.create({
+                                fileId: data.id,
+                                requestBody: {
+                                        role: 'reader',
+                                        type: 'anyone'
+                                }
+                        });
+                        parentID = data.id;
+                }
+                else if (!parentFolder.shared) {
+                        await driveApi.permissions.create({
+                                fileId: parentFolder.id,
+                                requestBody: {
+                                        role: 'reader',
+                                        type: 'anyone'
+                                }
+                        });
+                        parentID = parentFolder.data.id;
+                }
+                else
+                        parentID = parentFolder.id;
+                return parentID;
+        }
+};
+
 class GoatBotApis {
         constructor(apiKey) {
                 this.apiKey = apiKey;
@@ -792,6 +977,7 @@ const utils = {
         shortenURL,
         uploadZippyshare,
         uploadImgbb,
+        drive,
         GoatBotApis
 };
 
