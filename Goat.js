@@ -3,7 +3,6 @@ process.on('uncaughtException', error => console.log(error));
 
 const axios = require("axios");
 const fs = require("fs-extra");
-const nodemailer = require("nodemailer"); // Keep if you plan to use other email services, otherwise remove
 const { execSync } = require('child_process');
 const log = require('./logger/log.js');
 const path = require("path");
@@ -77,17 +76,14 @@ global.db = {
         allUserData: [],
         allDashBoardData: [],
         allGlobalData: [],
-
         threadModel: null,
         userModel: null,
         dashboardModel: null,
         globalModel: null,
-
         threadsData: null,
         usersData: null,
         dashBoardData: null,
         globalData: null,
-
         receivedTheFirstMessage: {}
 };
 
@@ -134,14 +130,14 @@ const watchAndReloadConfig = (dir, type, prop, logName) => {
                         const oldConfig = global.GoatBot[prop];
 
                         setTimeout(() => {
-                                if (isFirstModified) {
-                                        isFirstModified = false;
-                                        return;
-                                }
-                                if (lastModified === fs.statSync(dir).mtimeMs) {
-                                        return;
-                                }
                                 try {
+                                        if (isFirstModified) {
+                                                isFirstModified = false;
+                                                return;
+                                        }
+                                        if (lastModified === fs.statSync(dir).mtimeMs) {
+                                                return;
+                                        }
                                         global.GoatBot[prop] = JSON.parse(fs.readFileSync(dir, 'utf-8'));
                                         log.success(logName, `Reloaded ${dir.replace(process.cwd(), "")}`);
                                 }
@@ -186,11 +182,8 @@ if (config.autoRestart) {
 }
 
 (async () => {
-        // Dummy sendMail function since actual mail sending is disabled
-        global.utils.sendMail = () => new Promise(resolve => {
-                log.warn("MAIL", "Mail feature is disabled. An email was not sent.");
-                resolve();
-        });
+        global.utils.sendMail = async () => {};
+        global.utils.transporter = null;
 
         const { data: { version } } = await axios.get("https://raw.githubusercontent.com/ntkhang03/Goat-Bot-V2/main/package.json");
         const currentVersion = require("./package.json").version;
@@ -202,13 +195,6 @@ if (config.autoRestart) {
                         colors.hex("#eb6a07", version),
                         colors.hex("#eb6a07", "node update")
                 ));
-
-        // Google Drive features are also removed
-        // If 'utils.drive' is still referenced elsewhere, you might need to mock it or remove those references too.
-        global.utils.drive = {
-            checkAndCreateParentFolder: async () => { log.warn("GOOGLE DRIVE", "Google Drive feature is disabled."); return null; },
-            parentID: null
-        };
 
         require(`./bot/login/login${NODE_ENV === 'development' ? '.dev.js' : '.js'}`);
 })();
