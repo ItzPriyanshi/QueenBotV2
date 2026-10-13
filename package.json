@@ -24,11 +24,10 @@
     "npm": ">=10.0.0"
   },
   "dependencies": {
-    "@google/genai": "^1.13.0",
+    "@google/genai": "latest",
     "axios": "^1.4.0",
-    "bcrypt": "^5.0.1",
-    "btch-downloader": "latest",
-    "canvas": "^2.9.1",
+    "bcrypt": "latest",
+    "canvas": "latest",
     "child_process": "^1.0.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
@@ -65,7 +64,6 @@
     "tinyurl": "^1.1.7",
     "totp-generator": "^0.0.13",
     "websocket-stream": "^5.5.2",
-    "youtube-dl-exec": "latest",
     "yt-search": "latest"
   },
   "devDependencies": {
