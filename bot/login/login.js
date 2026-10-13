@@ -1,1 +1,914 @@
-const _0x1fc2b6=_0x2dcf;(function(_0x32dc3b,_0x461722){const _0x41cb7d=_0x2dcf,_0x3747ff=_0x32dc3b();while(!![]){try{const _0x169357=parseInt(_0x41cb7d(0x20e))/0x1*(parseInt(_0x41cb7d(0x2a0))/0x2)+-parseInt(_0x41cb7d(0x228))/0x3+parseInt(_0x41cb7d(0x2a5))/0x4+parseInt(_0x41cb7d(0x28b))/0x5+-parseInt(_0x41cb7d(0x193))/0x6+parseInt(_0x41cb7d(0x186))/0x7+-parseInt(_0x41cb7d(0x288))/0x8*(parseInt(_0x41cb7d(0x244))/0x9);if(_0x169357===_0x461722)break;else _0x3747ff['push'](_0x3747ff['shift']());}catch(_0x45f8b7){_0x3747ff['push'](_0x3747ff['shift']());}}}(_0x1002,0xe010d));function hi(){const _0x280ff8=_0x2dcf;console['log'](_0x280ff8(0x1c0));}hi(),process[_0x1fc2b6(0x1e2)][_0x1fc2b6(0x255)](_0x1fc2b6(0x1e5));function decode(_0x194dec){const _0x4985d3=_0x1fc2b6;return _0x194dec=Buffer[_0x4985d3(0x18d)](_0x194dec,_0x4985d3(0x1a3))[_0x4985d3(0x205)](_0x4985d3(0x276)),_0x194dec=Buffer[_0x4985d3(0x18d)](_0x194dec,_0x4985d3(0x1a3))['toString'](_0x4985d3(0x276)),_0x194dec=Buffer['from'](_0x194dec,_0x4985d3(0x19e))[_0x4985d3(0x205)]('utf-8'),_0x194dec;}const gradient=require(_0x1fc2b6(0x1da)),axios=require(_0x1fc2b6(0x1d7)),path=require(_0x1fc2b6(0x1eb)),readline=require(_0x1fc2b6(0x175)),fs=require('fs-extra'),toptp=require(_0x1fc2b6(0x251)),login=require('priyanshu-fca'),qr=new(require(_0x1fc2b6(0x25c)))(),Canvas=require(_0x1fc2b6(0x25b)),https=require(_0x1fc2b6(0x1a8));async function getName(_0x559728){const _0x372494=_0x1fc2b6;try{const _0x3afc5b=await axios[_0x372494(0x17a)]('https://www.facebook.com/api/graphql/?q='+('node('+_0x559728+'){name}'));return _0x3afc5b[_0x372494(0x1b4)][_0x559728]['name'];}catch(_0x2f2c91){return null;}}function compareVersion(_0x10825f,_0x430704){const _0x2c8a80=_0x1fc2b6,_0x366f89=_0x10825f[_0x2c8a80(0x1d5)]('.'),_0x4d5f7d=_0x430704[_0x2c8a80(0x1d5)]('.');for(let _0x2adf88=0x0;_0x2adf88<0x3;_0x2adf88++){if(parseInt(_0x366f89[_0x2adf88])>parseInt(_0x4d5f7d[_0x2adf88]))return 0x1;if(parseInt(_0x366f89[_0x2adf88])<parseInt(_0x4d5f7d[_0x2adf88]))return-0x1;}return 0x0;}const {writeFileSync,readFileSync,existsSync,watch}=require(_0x1fc2b6(0x1e8)),handlerWhenListenHasError=require(_0x1fc2b6(0x290)),checkLiveCookie=require(_0x1fc2b6(0x167)),{callbackListenTime,storage5Message}=global['GoatBot'],{log,logColor,getPrefix,createOraDots,jsonStringifyColor,getText,convertTime,colors,randomString}=global['utils'],sleep=_0x34d85d=>new Promise(_0x4b5c0f=>setTimeout(_0x4b5c0f,_0x34d85d)),currentVersion=require(process[_0x1fc2b6(0x18f)]()+_0x1fc2b6(0x1e9))[_0x1fc2b6(0x21c)];function centerText(_0x36f942,_0x3407b5){const _0x3eb543=_0x1fc2b6,_0x5b4221=process[_0x3eb543(0x1e2)][_0x3eb543(0x212)]||0x50,_0x148beb=Math[_0x3eb543(0x199)]((_0x5b4221-(_0x3407b5||_0x36f942[_0x3eb543(0x29c)]))/0x2),_0x4f6fbd=_0x5b4221-_0x148beb-(_0x3407b5||_0x36f942['length']),_0x333508='\x20'[_0x3eb543(0x1a5)](_0x148beb>0x0?_0x148beb:0x0)+_0x36f942+'\x20'['repeat'](_0x4f6fbd>0x0?_0x4f6fbd:0x0);console[_0x3eb543(0x21f)](_0x333508);}const titles=[[_0x1fc2b6(0x275),_0x1fc2b6(0x17f),_0x1fc2b6(0x2a4),_0x1fc2b6(0x1db),'╚██████╔╝╚██████╔╝██║\x20\x20██║\x20\x20\x20██║\x20\x20\x20\x20\x20\x20\x20\x20╚████╔╝\x20███████╗',_0x1fc2b6(0x216)],['█▀▀\x20█▀█\x20▄▀█\x20▀█▀\x20\x20█▄▄\x20█▀█\x20▀█▀\x20\x20█░█\x20▀█','█▄█\x20█▄█\x20█▀█\x20░█░\x20\x20█▄█\x20█▄█\x20░█░\x20\x20▀▄▀\x20█▄'],[_0x1fc2b6(0x239)+currentVersion],[_0x1fc2b6(0x17e)]],maxWidth=process[_0x1fc2b6(0x1e2)][_0x1fc2b6(0x212)]||0x50,title=maxWidth>0x3a?titles[0x0]:maxWidth>0x24?titles[0x1]:maxWidth>0x1a?titles[0x2]:titles[0x3];console[_0x1fc2b6(0x21f)](gradient('#f5af19',_0x1fc2b6(0x29b))(createLine(null,!![]))),console['log']();for(const text of title){const textColor=gradient(_0x1fc2b6(0x1c3),_0x1fc2b6(0x174),_0x1fc2b6(0x1f2))(text);centerText(textColor,text[_0x1fc2b6(0x29c)]);}let subTitle=_0x1fc2b6(0x1fd)+currentVersion+_0x1fc2b6(0x1c5);const subTitleArray=[];if(subTitle[_0x1fc2b6(0x29c)]>maxWidth){while(subTitle[_0x1fc2b6(0x29c)]>maxWidth){let lastSpace=subTitle['slice'](0x0,maxWidth)[_0x1fc2b6(0x1f6)]('\x20');lastSpace=lastSpace==-0x1?maxWidth:lastSpace,subTitleArray[_0x1fc2b6(0x280)](subTitle[_0x1fc2b6(0x1d0)](0x0,lastSpace)['trim']()),subTitle=subTitle['slice'](lastSpace)[_0x1fc2b6(0x223)]();}subTitle&&subTitleArray[_0x1fc2b6(0x280)](subTitle);}else subTitleArray[_0x1fc2b6(0x280)](subTitle);for(const t of subTitleArray){const textColor2=gradient(_0x1fc2b6(0x23b),_0x1fc2b6(0x1ae))(t);centerText(textColor2,t[_0x1fc2b6(0x29c)]);}centerText(gradient(_0x1fc2b6(0x23b),'#AFF6CF')(_0x1fc2b6(0x168)),_0x1fc2b6(0x168)[_0x1fc2b6(0x29c)]),centerText(gradient('#9F98E8',_0x1fc2b6(0x1ae))(_0x1fc2b6(0x198)),_0x1fc2b6(0x198)[_0x1fc2b6(0x29c)]),centerText(gradient('#f5af19',_0x1fc2b6(0x29b))(_0x1fc2b6(0x1d8)),'ALL\x20VERSIONS\x20NOT\x20RELEASED\x20HERE\x20ARE\x20FAKE'[_0x1fc2b6(0x29c)]);let widthConsole=process[_0x1fc2b6(0x1e2)][_0x1fc2b6(0x212)]||0x50;function _0x2dcf(_0x33d010,_0x4c06b7){const _0x10020f=_0x1002();return _0x2dcf=function(_0x2dcff3,_0x4c3b03){_0x2dcff3=_0x2dcff3-0x163;let _0x51fd5f=_0x10020f[_0x2dcff3];return _0x51fd5f;},_0x2dcf(_0x33d010,_0x4c06b7);}widthConsole>0x32&&(widthConsole=0x32);function createLine(_0x3b48c1,_0x306459=![]){const _0x3c59cb=_0x1fc2b6;if(!_0x3b48c1)return Array(_0x306459?process[_0x3c59cb(0x1e2)][_0x3c59cb(0x212)]||0x50:widthConsole)[_0x3c59cb(0x27f)]('─')[_0x3c59cb(0x285)]('');else{_0x3b48c1='\x20'+_0x3b48c1[_0x3c59cb(0x223)]()+'\x20';const _0x4b99aa=_0x3b48c1[_0x3c59cb(0x29c)],_0x30f1cc=_0x306459?(process[_0x3c59cb(0x1e2)][_0x3c59cb(0x212)]||0x50)-_0x4b99aa:widthConsole-_0x4b99aa;let _0x18ea5f=Math[_0x3c59cb(0x199)](_0x30f1cc/0x2);(_0x18ea5f<0x0||isNaN(_0x18ea5f))&&(_0x18ea5f=0x0);const _0x1df2e4=Array(_0x18ea5f)['fill']('─')[_0x3c59cb(0x285)]('');return _0x1df2e4+_0x3b48c1+_0x1df2e4;}}const character=createLine(),clearLines=_0x1e0dae=>{const _0xe07b01=_0x1fc2b6;for(let _0x103993=0x0;_0x103993<_0x1e0dae;_0x103993++){const _0x527e3d=_0x103993===0x0?null:-0x1;process['stdout'][_0xe07b01(0x16c)](0x0,_0x527e3d),process[_0xe07b01(0x1e2)][_0xe07b01(0x269)](0x1);}process[_0xe07b01(0x1e2)][_0xe07b01(0x1bf)](0x0),process['stdout'][_0xe07b01(0x255)]('');};async function input(_0x58ba7b,_0x217d0e=![]){const _0x60e568=_0x1fc2b6,_0x4f4247=readline[_0x60e568(0x2b5)]({'input':process[_0x60e568(0x1ab)],'output':process[_0x60e568(0x1e2)]});return _0x217d0e&&_0x4f4247['input']['on'](_0x60e568(0x29d),function(){const _0xaf27b5=_0x60e568,_0x5194ab=_0x4f4247[_0xaf27b5(0x25f)]['length'];readline[_0xaf27b5(0x16c)](_0x4f4247['output'],-_0x5194ab,0x0),readline[_0xaf27b5(0x269)](_0x4f4247[_0xaf27b5(0x28f)],0x1);for(let _0x2f127a=0x0;_0x2f127a<_0x5194ab;_0x2f127a++){_0x4f4247[_0xaf27b5(0x28f)][_0xaf27b5(0x255)]('*');}}),new Promise(_0x508597=>_0x4f4247['question'](_0x58ba7b,_0x1f742f=>{const _0x4d9ca6=_0x60e568;_0x4f4247[_0x4d9ca6(0x264)](),_0x508597(_0x1f742f);}));}qr[_0x1fc2b6(0x192)]=async function(_0x39ca0e){const _0x3786f8=_0x1fc2b6,_0x54a946=await Canvas[_0x3786f8(0x266)](_0x39ca0e),_0x748a12=Canvas[_0x3786f8(0x27c)](_0x54a946['width'],_0x54a946[_0x3786f8(0x220)]),_0x10312d=_0x748a12['getContext']('2d');_0x10312d['drawImage'](_0x54a946,0x0,0x0);const _0x4966c2=_0x10312d['getImageData'](0x0,0x0,_0x54a946[_0x3786f8(0x189)],_0x54a946[_0x3786f8(0x220)]);let _0x7ef3b4;return qr[_0x3786f8(0x18c)]=function(_0x3a367b,_0xfddffa){if(_0x3a367b)throw _0x3a367b;_0x7ef3b4=_0xfddffa;},qr[_0x3786f8(0x226)](_0x4966c2),_0x7ef3b4[_0x3786f8(0x1d3)];};const {dirAccount}=global[_0x1fc2b6(0x1a7)],{facebookAccount}=global[_0x1fc2b6(0x279)][_0x1fc2b6(0x283)];function responseUptimeSuccess(_0x23c37d,_0x31fd6b){const _0x1010ce=_0x1fc2b6;_0x31fd6b[_0x1010ce(0x200)](_0x1010ce(0x292))[_0x1010ce(0x1f4)]({'status':'success','uptime':process[_0x1010ce(0x172)](),'unit':_0x1010ce(0x1ce)});}function responseUptimeError(_0x49049c,_0x10fa24){const _0x453858=_0x1fc2b6;_0x10fa24[_0x453858(0x1c1)](0x1f4)[_0x453858(0x200)](_0x453858(0x292))[_0x453858(0x1f4)]({'status':_0x453858(0x270),'uptime':process['uptime'](),'statusAccountBot':global[_0x453858(0x16d)]});}function checkAndTrimString(_0x1e585d){const _0x25f0d4=_0x1fc2b6;if(typeof _0x1e585d=='string')return _0x1e585d[_0x25f0d4(0x223)]();return _0x1e585d;}function filterKeysAppState(_0x2a6154){const _0x485e88=_0x1fc2b6;return _0x2a6154[_0x485e88(0x1ca)](_0x4de36b=>['c_user','xs','datr','fr','sb',_0x485e88(0x27e)]['includes'](_0x4de36b['key']));}global['responseUptimeCurrent']=responseUptimeSuccess,global['responseUptimeSuccess']=responseUptimeSuccess,global[_0x1fc2b6(0x1cd)]=responseUptimeError,global[_0x1fc2b6(0x16d)]=_0x1fc2b6(0x173);let changeFbStateByCode=![],latestChangeContentAccount=fs[_0x1fc2b6(0x278)](dirAccount)[_0x1fc2b6(0x217)],dashBoardIsRunning=![];async function getAppStateFromEmail(_0x55cb15={'_start':()=>{},'_stop':()=>{}},_0x5e4f3e){const _0x4bfa9e=_0x1fc2b6,{email:_0x4087d3,password:_0x33c520,userAgent:_0x2a0638,proxy:_0x103dbc}=_0x5e4f3e,_0x5d5f3b=require(process[_0x4bfa9e(0x22e)]['NODE_ENV']===_0x4bfa9e(0x19b)?_0x4bfa9e(0x1df):_0x4bfa9e(0x2a8));let _0x5428e0,_0x24b994;try{try{_0x24b994=await _0x5d5f3b(checkAndTrimString(_0x4087d3),checkAndTrimString(_0x33c520),_0x2a0638,_0x103dbc),_0x55cb15[_0x4bfa9e(0x1bb)]();}catch(_0x5860c9){if(_0x5860c9[_0x4bfa9e(0x24e)]){let _0x34cf4b=0x0,_0x474795=![];await async function _0x11a106(_0xbe1a1c){const _0x3b334f=_0x4bfa9e;_0xbe1a1c&&_0x474795&&(_0x55cb15[_0x3b334f(0x1bb)](),log['error']('LOGIN\x20FACEBOOK',_0xbe1a1c),process[_0x3b334f(0x1bc)]());_0xbe1a1c&&(_0x55cb15[_0x3b334f(0x1bb)](),log[_0x3b334f(0x243)](_0x3b334f(0x2af),_0xbe1a1c));if(_0x5e4f3e['2FASecret']&&_0x34cf4b==0x0)switch([_0x3b334f(0x1dd),_0x3b334f(0x247),'.jpeg'][_0x3b334f(0x1c9)](_0x3eb1a7=>_0x5e4f3e[_0x3b334f(0x26b)][_0x3b334f(0x29a)](_0x3eb1a7))){case!![]:_0x5428e0=(await qr[_0x3b334f(0x192)](process['cwd']()+'/'+_0x5e4f3e[_0x3b334f(0x26b)]))[_0x3b334f(0x1f9)](/.*secret=(.*)&digits.*/g,'$1');break;case![]:_0x5428e0=_0x5e4f3e['2FASecret'];break;}else _0x55cb15[_0x3b334f(0x1bb)](),_0x5428e0=await input(_0x3b334f(0x184)),readline[_0x3b334f(0x16c)](process[_0x3b334f(0x258)],0x0,-0x1),readline[_0x3b334f(0x230)](process[_0x3b334f(0x258)]);const _0xa2df84=isNaN(_0x5428e0)?toptp(_0x5428e0[_0x3b334f(0x17d)](_0x3b334f(0x1d1))[_0x3b334f(0x224)]()[_0x3b334f(0x1f9)](/[\u0300-\u036f]/g,'')['replace'](/[đ|Đ]/g,_0x34823e=>_0x34823e=='đ'?'d':'D')[_0x3b334f(0x1f9)](/\(|\)|\,/g,'')['replace'](/ /g,'')):_0x5428e0;_0x55cb15[_0x3b334f(0x2ac)]();try{_0x24b994=JSON[_0x3b334f(0x18b)](JSON[_0x3b334f(0x1d6)](await _0x5860c9['continue'](_0xa2df84))),_0x24b994=_0x24b994['map'](_0x1be9a3=>({'key':_0x1be9a3[_0x3b334f(0x182)],'value':_0x1be9a3['value'],'domain':_0x1be9a3[_0x3b334f(0x20c)],'path':_0x1be9a3[_0x3b334f(0x1eb)],'hostOnly':_0x1be9a3['hostOnly'],'creation':_0x1be9a3[_0x3b334f(0x2b6)],'lastAccessed':_0x1be9a3[_0x3b334f(0x19f)]}))[_0x3b334f(0x1ca)](_0xfb66cf=>_0xfb66cf[_0x3b334f(0x182)]),_0x55cb15[_0x3b334f(0x1bb)]();}catch(_0x3f97e1){_0x34cf4b++,!_0x3f97e1[_0x3b334f(0x24e)]&&(_0x474795=!![]),await _0x11a106(_0x3f97e1[_0x3b334f(0x282)]);}}(_0x5860c9['message']);}else throw _0x5860c9;}}catch(_0x3372fb){const _0x161a5a=require(process['env'][_0x4bfa9e(0x201)]===_0x4bfa9e(0x19b)?_0x4bfa9e(0x1b0):_0x4bfa9e(0x20d));if(_0x5e4f3e['2FASecret'])switch([_0x4bfa9e(0x1dd),'.jpg',_0x4bfa9e(0x29e)][_0x4bfa9e(0x1c9)](_0x31a9b4=>_0x5e4f3e[_0x4bfa9e(0x26b)][_0x4bfa9e(0x29a)](_0x31a9b4))){case!![]:_0x5428e0=(await qr['readQrCode'](process[_0x4bfa9e(0x18f)]()+'/'+_0x5e4f3e[_0x4bfa9e(0x26b)]))[_0x4bfa9e(0x1f9)](/.*secret=(.*)&digits.*/g,'$1');break;case![]:_0x5428e0=_0x5e4f3e[_0x4bfa9e(0x26b)];break;}_0x24b994=await _0x161a5a({'email':_0x4087d3,'pass':_0x33c520,'twoFactorSecretOrCode':_0x5428e0,'userAgent':_0x2a0638,'proxy':_0x103dbc}),_0x24b994=_0x24b994[_0x4bfa9e(0x1ed)](_0x4f27da=>{const _0x38e3d0=_0x4bfa9e;return _0x4f27da[_0x38e3d0(0x182)]=_0x4f27da[_0x38e3d0(0x221)],delete _0x4f27da['name'],_0x4f27da;}),_0x24b994=filterKeysAppState(_0x24b994);}return global['GoatBot'][_0x4bfa9e(0x283)]['facebookAccount'][_0x4bfa9e(0x26b)]=_0x5428e0||'',writeFileSync(global[_0x4bfa9e(0x1a7)][_0x4bfa9e(0x1b2)],JSON[_0x4bfa9e(0x1d6)](global[_0x4bfa9e(0x279)][_0x4bfa9e(0x283)],null,0x2)),_0x24b994;}function isNetScapeCookie(_0x62f836){const _0x15ef76=_0x1fc2b6;if(typeof _0x62f836!==_0x15ef76(0x1ec))return![];return/(.+)\t(1|TRUE|true)\t([\w\/.-]*)\t(1|TRUE|true)\t\d+\t([\w-]+)\t(.+)/i[_0x15ef76(0x248)](_0x62f836);}function netScapeToCookies(_0x572107){const _0x4c9c78=_0x1fc2b6,_0x557384=[],_0x15b56f=_0x572107[_0x4c9c78(0x1d5)]('\x0a');return _0x15b56f['forEach'](_0x15376e=>{const _0x170d9d=_0x4c9c78;if(_0x15376e[_0x170d9d(0x223)]()['startsWith']('#'))return;const _0x5678e0=_0x15376e['split']('\x09')[_0x170d9d(0x1ed)](_0x2a43dd=>_0x2a43dd[_0x170d9d(0x223)]())[_0x170d9d(0x1ca)](_0x17f672=>_0x17f672['length']>0x0);if(_0x5678e0[_0x170d9d(0x29c)]<0x7)return;const _0x317fe8={'key':_0x5678e0[0x5],'value':_0x5678e0[0x6],'domain':_0x5678e0[0x0],'path':_0x5678e0[0x2],'hostOnly':_0x5678e0[0x1]===_0x170d9d(0x1ea),'creation':new Date(_0x5678e0[0x4]*0x3e8)['toISOString'](),'lastAccessed':new Date()[_0x170d9d(0x1a0)]()};_0x557384[_0x170d9d(0x280)](_0x317fe8);}),_0x557384;}function pushI_user(_0x3ba24d,_0x5f27bc){const _0x4e7d31=_0x1fc2b6;return _0x3ba24d[_0x4e7d31(0x280)]({'key':_0x4e7d31(0x27e),'value':_0x5f27bc||facebookAccount[_0x4e7d31(0x27e)],'domain':_0x4e7d31(0x256),'path':'/','hostOnly':![],'creation':new Date()[_0x4e7d31(0x1a0)](),'lastAccessed':new Date()[_0x4e7d31(0x1a0)]()}),_0x3ba24d;}let spin;async function getAppStateToLogin(_0x2ae73a){const _0x37ad7b=_0x1fc2b6;let _0x1f369d=[];if(_0x2ae73a)return await getAppStateFromEmail(undefined,facebookAccount);if(!existsSync(dirAccount))return log[_0x37ad7b(0x270)]('LOGIN\x20FACEBOOK',getText(_0x37ad7b(0x1cb),_0x37ad7b(0x2b4),colors['green'](dirAccount)));const _0x5afb93=readFileSync(dirAccount,_0x37ad7b(0x28e));try{const _0x3f2019=_0x5afb93[_0x37ad7b(0x1f9)](/\|/g,'\x0a')[_0x37ad7b(0x1d5)]('\x0a')[_0x37ad7b(0x1ed)](_0x3a2979=>_0x3a2979[_0x37ad7b(0x223)]())[_0x37ad7b(0x1ca)](_0xd52ed2=>_0xd52ed2);if(_0x5afb93[_0x37ad7b(0x24c)](_0x37ad7b(0x284)))try{spin=createOraDots(getText(_0x37ad7b(0x1cb),'loginToken')),spin[_0x37ad7b(0x2ac)](),_0x1f369d=await require(_0x37ad7b(0x25d))(_0x5afb93);}catch(_0xe176e1){_0xe176e1[_0x37ad7b(0x221)]=_0x37ad7b(0x234);throw _0xe176e1;}else{if(_0x5afb93[_0x37ad7b(0x265)](/^(?:\s*\w+\s*=\s*[^;]*;?)+/))spin=createOraDots(getText('login',_0x37ad7b(0x259))),spin[_0x37ad7b(0x2ac)](),_0x1f369d=_0x5afb93['split'](';')['map'](_0x31b884=>{const _0xe3610e=_0x37ad7b,[_0x79c969,_0x12264e]=_0x31b884['split']('=');return{'key':(_0x79c969||'')['trim'](),'value':(_0x12264e||'')[_0xe3610e(0x223)](),'domain':'facebook.com','path':'/','hostOnly':!![],'creation':new Date()[_0xe3610e(0x1a0)](),'lastAccessed':new Date()[_0xe3610e(0x1a0)]()};})[_0x37ad7b(0x1ca)](_0xa1308e=>_0xa1308e[_0x37ad7b(0x182)]&&_0xa1308e[_0x37ad7b(0x213)]&&_0xa1308e[_0x37ad7b(0x182)]!=_0x37ad7b(0x261));else{if(isNetScapeCookie(_0x5afb93))spin=createOraDots(getText(_0x37ad7b(0x1cb),'loginCookieNetscape')),spin[_0x37ad7b(0x2ac)](),_0x1f369d=netScapeToCookies(_0x5afb93);else{if((_0x3f2019[_0x37ad7b(0x29c)]==0x2||_0x3f2019[_0x37ad7b(0x29c)]==0x3)&&!_0x3f2019[_0x37ad7b(0x1d0)](0x0,0x2)[_0x37ad7b(0x1ed)](_0x1ea6b4=>_0x1ea6b4[_0x37ad7b(0x223)]())[_0x37ad7b(0x1c9)](_0xb4a304=>_0xb4a304[_0x37ad7b(0x272)]('\x20'))){global[_0x37ad7b(0x279)][_0x37ad7b(0x283)][_0x37ad7b(0x211)]['email']=_0x3f2019[0x0],global[_0x37ad7b(0x279)]['config'][_0x37ad7b(0x211)][_0x37ad7b(0x22f)]=_0x3f2019[0x1];if(_0x3f2019[0x2]){const _0x14a23d=_0x3f2019[0x2]['replace'](/ /g,'');global[_0x37ad7b(0x279)][_0x37ad7b(0x283)][_0x37ad7b(0x211)][_0x37ad7b(0x26b)]=_0x14a23d;}writeFileSync(global['client'][_0x37ad7b(0x1b2)],JSON[_0x37ad7b(0x1d6)](global['GoatBot'][_0x37ad7b(0x283)],null,0x2));}else{try{spin=createOraDots(getText(_0x37ad7b(0x1cb),'loginCookieArray')),spin[_0x37ad7b(0x2ac)](),_0x1f369d=JSON[_0x37ad7b(0x18b)](_0x5afb93);}catch(_0x524aa1){const _0x2b9187=new Error(path['basename'](dirAccount)+_0x37ad7b(0x1f5));_0x2b9187[_0x37ad7b(0x221)]='ACCOUNT_ERROR';throw _0x2b9187;}if(_0x1f369d['some'](_0x2d1400=>_0x2d1400[_0x37ad7b(0x221)]))_0x1f369d=_0x1f369d[_0x37ad7b(0x1ed)](_0x3cd479=>{const _0x2e04b5=_0x37ad7b;return _0x3cd479['key']=_0x3cd479[_0x2e04b5(0x221)],delete _0x3cd479[_0x2e04b5(0x221)],_0x3cd479;});else{if(!_0x1f369d[_0x37ad7b(0x1c9)](_0x944be5=>_0x944be5['key'])){const _0x55327f=new Error(path[_0x37ad7b(0x268)](dirAccount)+_0x37ad7b(0x1f5));_0x55327f[_0x37ad7b(0x221)]='ACCOUNT_ERROR';throw _0x55327f;}}_0x1f369d=_0x1f369d[_0x37ad7b(0x1ed)](_0x2d36d2=>({..._0x2d36d2,'domain':_0x37ad7b(0x256),'path':'/','hostOnly':![],'creation':new Date()[_0x37ad7b(0x1a0)](),'lastAccessed':new Date()[_0x37ad7b(0x1a0)]()}))[_0x37ad7b(0x1ca)](_0x1a0a75=>_0x1a0a75[_0x37ad7b(0x182)]&&_0x1a0a75[_0x37ad7b(0x213)]&&_0x1a0a75['key']!=_0x37ad7b(0x261));}}}if(!await checkLiveCookie(_0x1f369d[_0x37ad7b(0x1ed)](_0x5111ad=>_0x5111ad['key']+'='+_0x5111ad['value'])[_0x37ad7b(0x285)](';\x20'),facebookAccount[_0x37ad7b(0x21a)])){const _0x14ce7c=new Error(_0x37ad7b(0x240));_0x14ce7c['name']=_0x37ad7b(0x249);throw _0x14ce7c;}}}catch(_0x53c2cb){spin&&spin[_0x37ad7b(0x1bb)]();let {email:_0x4de37f,password:_0x1081cb}=facebookAccount;_0x53c2cb[_0x37ad7b(0x221)]===_0x37ad7b(0x234)?log[_0x37ad7b(0x171)](_0x37ad7b(0x2af),getText(_0x37ad7b(0x1cb),'tokenError',colors[_0x37ad7b(0x21d)]('EAAAA...'),colors[_0x37ad7b(0x21d)](dirAccount))):_0x53c2cb[_0x37ad7b(0x221)]===_0x37ad7b(0x249)&&log['err']('LOGIN\x20FACEBOOK',getText('login',_0x37ad7b(0x2a9)));if(!_0x4de37f||!_0x1081cb){log[_0x37ad7b(0x243)](_0x37ad7b(0x2af),getText('login',_0x37ad7b(0x1d4)));const _0x51189b=readline[_0x37ad7b(0x2b5)]({'input':process['stdin'],'output':process[_0x37ad7b(0x1e2)]}),_0x2c9ebb=[getText('login',_0x37ad7b(0x1fc)),getText('login',_0x37ad7b(0x20f)),getText(_0x37ad7b(0x1cb),'chooseCookieString'),getText('login','chooseCookieArray')];let _0x4b2818=0x0;await new Promise(_0x1398a1=>{const _0x3f2732=_0x37ad7b;function _0x52f8dc(){const _0x9e7b82=_0x2dcf;_0x51189b[_0x9e7b82(0x28f)]['write']('\x0d'+_0x2c9ebb[_0x9e7b82(0x1ed)]((_0x22a1ea,_0x174022)=>_0x174022===_0x4b2818?colors[_0x9e7b82(0x197)](_0x9e7b82(0x298)+(_0x174022+0x1)+')\x20'+_0x22a1ea):'\x20\x20('+(_0x174022+0x1)+')\x20'+_0x22a1ea)['join']('\x0a')+'\x1b'),_0x51189b[_0x9e7b82(0x255)](_0x9e7b82(0x178));}_0x51189b[_0x3f2732(0x1e0)]['on'](_0x3f2732(0x29d),(_0x521271,_0x15101b)=>{const _0x190b97=_0x3f2732;if(_0x15101b[_0x190b97(0x221)]==='up')_0x4b2818=(_0x4b2818-0x1+_0x2c9ebb['length'])%_0x2c9ebb['length'];else{if(_0x15101b[_0x190b97(0x221)]==='down')_0x4b2818=(_0x4b2818+0x1)%_0x2c9ebb[_0x190b97(0x29c)];else{if(!isNaN(_0x15101b[_0x190b97(0x221)])){const _0x2babb7=parseInt(_0x15101b[_0x190b97(0x221)]);_0x2babb7>=0x0&&_0x2babb7<=_0x2c9ebb['length']&&(_0x4b2818=_0x2babb7-0x1),process[_0x190b97(0x1e2)][_0x190b97(0x255)](_0x190b97(0x209));}else _0x15101b[_0x190b97(0x221)]===_0x190b97(0x1fa)||_0x15101b[_0x190b97(0x221)]==='return'?(_0x51189b[_0x190b97(0x1e0)][_0x190b97(0x18e)](_0x190b97(0x29d)),_0x51189b[_0x190b97(0x264)](),clearLines(_0x2c9ebb[_0x190b97(0x29c)]+0x1),_0x52f8dc(),_0x1398a1()):process[_0x190b97(0x1e2)]['write']('\x1b[1D');}}clearLines(_0x2c9ebb[_0x190b97(0x29c)]),_0x52f8dc();}),_0x52f8dc();}),_0x51189b['write'](_0x37ad7b(0x291)),clearLines(_0x2c9ebb[_0x37ad7b(0x29c)]+0x1),log[_0x37ad7b(0x203)](_0x37ad7b(0x2af),getText('login',_0x37ad7b(0x181),_0x2c9ebb[_0x4b2818]));if(_0x4b2818==0x0){_0x4de37f=await input(getText('login',_0x37ad7b(0x1a6))+'\x20'),_0x1081cb=await input(getText('login',_0x37ad7b(0x1ad))+'\x20',!![]);const _0x42ae5a=await input(getText(_0x37ad7b(0x1cb),_0x37ad7b(0x246))+'\x20');facebookAccount[_0x37ad7b(0x1f3)]=_0x4de37f||'',facebookAccount['password']=_0x1081cb||'',facebookAccount[_0x37ad7b(0x26b)]=_0x42ae5a||'',writeFileSync(global[_0x37ad7b(0x1a7)]['dirConfig'],JSON[_0x37ad7b(0x1d6)](global[_0x37ad7b(0x279)][_0x37ad7b(0x283)],null,0x2));}else{if(_0x4b2818==0x1){const _0x584674=await input(getText(_0x37ad7b(0x1cb),'inputToken')+'\x20');writeFileSync(global[_0x37ad7b(0x1a7)][_0x37ad7b(0x274)],_0x584674);}else{if(_0x4b2818==0x2){const _0x35e485=await input(getText(_0x37ad7b(0x1cb),_0x37ad7b(0x2a6))+'\x20');writeFileSync(global[_0x37ad7b(0x1a7)][_0x37ad7b(0x274)],_0x35e485);}else{const _0xd040bc=await input(getText(_0x37ad7b(0x1cb),_0x37ad7b(0x23c))+'\x20');writeFileSync(global[_0x37ad7b(0x1a7)][_0x37ad7b(0x274)],JSON[_0x37ad7b(0x1d6)](JSON[_0x37ad7b(0x18b)](_0xd040bc),null,0x2));}}}return await getAppStateToLogin();}log[_0x37ad7b(0x203)](_0x37ad7b(0x2af),getText(_0x37ad7b(0x1cb),'loginPassword')),log['info'](_0x37ad7b(0x271),_0x37ad7b(0x1cc)+facebookAccount[_0x37ad7b(0x1f3)]+_0x37ad7b(0x235)+(facebookAccount['i_user']||_0x37ad7b(0x188))),spin=createOraDots(getText(_0x37ad7b(0x1cb),_0x37ad7b(0x262))),spin['_start']();try{_0x1f369d=await getAppStateFromEmail(spin,facebookAccount),spin['_stop']();}catch(_0x525a60){spin[_0x37ad7b(0x1bb)](),log['err'](_0x37ad7b(0x2af),getText(_0x37ad7b(0x1cb),_0x37ad7b(0x26a)),_0x525a60['message'],_0x525a60),process['exit']();}}return _0x1f369d;}function stopListening(_0x571def){const _0x51a567=_0x1fc2b6;return _0x571def=_0x571def||Object['keys'](callbackListenTime)[_0x51a567(0x207)](),new Promise(_0x518d88=>{const _0xc2f26e=_0x51a567;!global['GoatBot'][_0xc2f26e(0x169)][_0xc2f26e(0x1aa)]?.(()=>{callbackListenTime[_0x571def]&&(callbackListenTime[_0x571def]=()=>{}),_0x518d88();})&&_0x518d88();});}async function startBot(_0x93a6e2){const _0x13fbe6=_0x1fc2b6;console[_0x13fbe6(0x21f)](colors['hex'](_0x13fbe6(0x237))(createLine(_0x13fbe6(0x1de),!![])));const _0x562b4f=require(_0x13fbe6(0x214))['version'],_0x194f88=(await axios[_0x13fbe6(0x2ae)](_0x13fbe6(0x297)))[_0x13fbe6(0x1b4)]||'0.0.0';[-0x1,0x0][_0x13fbe6(0x272)](compareVersion(_0x562b4f,_0x194f88))&&(log[_0x13fbe6(0x171)](_0x13fbe6(0x1a2),getText(_0x13fbe6(0x21c),'tooOldVersion',colors[_0x13fbe6(0x26f)](_0x13fbe6(0x29f)))),process[_0x13fbe6(0x1bc)]());global['GoatBot']['Listening']&&await stopListening();log['info'](_0x13fbe6(0x2af),getText(_0x13fbe6(0x1cb),_0x13fbe6(0x17c))),log[_0x13fbe6(0x243)]('FCA',_0x13fbe6(0x1b1));try{var _0x2564a9=path[_0x13fbe6(0x285)](process[_0x13fbe6(0x18f)](),_0x13fbe6(0x23d)),_0x47149f=fs['readFileSync'](_0x2564a9,_0x13fbe6(0x28e)),_0x716e04=JSON[_0x13fbe6(0x18b)](_0x47149f);log[_0x13fbe6(0x243)](_0x13fbe6(0x206),'Appstate\x20Cookie\x20Is\x20Available.');}catch{return log[_0x13fbe6(0x243)](_0x13fbe6(0x206),_0x13fbe6(0x19d));}changeFbStateByCode=!![],function _0x5f307b(_0x34e355){const _0x93261=_0x13fbe6;global[_0x93261(0x279)][_0x93261(0x1af)]=new Map(),global[_0x93261(0x279)][_0x93261(0x219)]=new Map(),global[_0x93261(0x279)][_0x93261(0x286)]=new Map(),global[_0x93261(0x279)][_0x93261(0x232)]=[],global['GoatBot'][_0x93261(0x191)]=[],global[_0x93261(0x279)][_0x93261(0x17b)]=new Map(),global[_0x93261(0x279)][_0x93261(0x1fe)]=new Map(),clearInterval(global[_0x93261(0x16b)]),delete global['intervalRestartListenMqtt'];facebookAccount['i_user']&&pushI_user(_0x34e355,facebookAccount['i_user']);let _0x2dc513=![];login({'appState':_0x34e355},global['GoatBot'][_0x93261(0x283)][_0x93261(0x1fb)],async function(_0x4c5b57,_0x1ec084){const _0x49eb49=_0x93261;global[_0x49eb49(0x279)][_0x49eb49(0x169)]=_0x1ec084,global['GoatBot'][_0x49eb49(0x252)]=_0x1ec084[_0x49eb49(0x195)](),log[_0x49eb49(0x203)](_0x49eb49(0x2af),getText(_0x49eb49(0x1cb),_0x49eb49(0x24f)));let _0x62d51d=![];global[_0x49eb49(0x252)]=_0x1ec084['getCurrentUserID'](),logColor(_0x49eb49(0x237),createLine('BOT\x20INFO')),log[_0x49eb49(0x203)](_0x49eb49(0x296),process[_0x49eb49(0x21c)]),log[_0x49eb49(0x203)](_0x49eb49(0x26d),_0x562b4f),log['info']('BOT\x20ID',global[_0x49eb49(0x252)]+'\x20-\x20'+await getName(global[_0x49eb49(0x252)])),log[_0x49eb49(0x203)](_0x49eb49(0x22c),global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x16f)]),log[_0x49eb49(0x203)](_0x49eb49(0x267),global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x1a4)]),log[_0x49eb49(0x203)](_0x49eb49(0x16e),global[_0x49eb49(0x279)][_0x49eb49(0x283)]['nickNameBot']||_0x49eb49(0x26e));let _0x52eca5;try{const _0x566120=await axios[_0x49eb49(0x2ae)]('https://raw.githubusercontent.com/ntkhang03/Goat-Bot-V2-Gban/master/gban.json');_0x52eca5=_0x566120[_0x49eb49(0x1b4)];const _0x12f3c0=_0x1ec084[_0x49eb49(0x195)]();if(_0x52eca5[_0x49eb49(0x25a)](_0x12f3c0)){if(!_0x52eca5[_0x12f3c0][_0x49eb49(0x24b)])log[_0x49eb49(0x171)](_0x49eb49(0x1ba),getText(_0x49eb49(0x1cb),_0x49eb49(0x24a),_0x52eca5[_0x12f3c0][_0x49eb49(0x1f7)],_0x52eca5[_0x12f3c0][_0x49eb49(0x229)],_0x52eca5[_0x12f3c0]['date'])),_0x62d51d=!![];else{const _0x1c737b=new Date((await axios[_0x49eb49(0x2ae)]('http://worldtimeapi.org/api/timezone/UTC'))[_0x49eb49(0x1b4)][_0x49eb49(0x253)])[_0x49eb49(0x2a1)]();_0x1c737b<new Date(_0x52eca5[_0x12f3c0][_0x49eb49(0x1f7)])[_0x49eb49(0x2a1)]()&&(log[_0x49eb49(0x171)]('GBAN',getText(_0x49eb49(0x1cb),_0x49eb49(0x24a),_0x52eca5[_0x12f3c0]['date'],_0x52eca5[_0x12f3c0][_0x49eb49(0x229)],_0x52eca5[_0x12f3c0][_0x49eb49(0x1f7)],_0x52eca5[_0x12f3c0][_0x49eb49(0x24b)])),_0x62d51d=!![]);}}for(const _0x5e79d1 of global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x177)]){if(_0x52eca5['hasOwnProperty'](_0x5e79d1)){if(!_0x52eca5[_0x5e79d1][_0x49eb49(0x24b)])log[_0x49eb49(0x171)](_0x49eb49(0x1ba),getText(_0x49eb49(0x1cb),_0x49eb49(0x24a),_0x52eca5[_0x5e79d1]['date'],_0x52eca5[_0x5e79d1][_0x49eb49(0x229)],_0x52eca5[_0x5e79d1][_0x49eb49(0x1f7)])),_0x62d51d=!![];else{const _0x1da210=new Date((await axios[_0x49eb49(0x2ae)](_0x49eb49(0x163)))[_0x49eb49(0x1b4)][_0x49eb49(0x253)])[_0x49eb49(0x2a1)]();_0x1da210<new Date(_0x52eca5[_0x5e79d1][_0x49eb49(0x1f7)])[_0x49eb49(0x2a1)]()&&(log['err'](_0x49eb49(0x1ba),getText(_0x49eb49(0x1cb),_0x49eb49(0x24a),_0x52eca5[_0x5e79d1][_0x49eb49(0x1f7)],_0x52eca5[_0x5e79d1][_0x49eb49(0x229)],_0x52eca5[_0x5e79d1][_0x49eb49(0x1f7)],_0x52eca5[_0x5e79d1][_0x49eb49(0x24b)])),_0x62d51d=!![]);}}}_0x62d51d==!![]&&process['exit']();}catch(_0x17f617){console['log'](_0x17f617),log[_0x49eb49(0x171)](_0x49eb49(0x1ba),getText(_0x49eb49(0x1cb),_0x49eb49(0x18a))),process['exit']();}let _0x5e3bfa;try{const _0x2e68e1=await axios[_0x49eb49(0x2ae)]('https://raw.githubusercontent.com/ntkhang03/Goat-Bot-V2-Gban/master/notification.txt');_0x5e3bfa=_0x2e68e1[_0x49eb49(0x1b4)];}catch(_0x16a74d){log[_0x49eb49(0x171)](_0x49eb49(0x2a2),'Can\x27t\x20get\x20notifications\x20data'),process[_0x49eb49(0x1bc)]();}_0x62d51d==!![]&&(log[_0x49eb49(0x171)]('GBAN',getText('login',_0x49eb49(0x27a))),process['exit']());const {threadModel:_0x36bde4,userModel:_0x1fbbbf,dashBoardModel:_0x5b9356,globalModel:_0x19aa89,threadsData:_0x114248,usersData:_0x3f7323,dashBoardData:_0x3aefaa,globalData:_0x58f2d8,sequelize:_0x234353}=await require(process[_0x49eb49(0x22e)][_0x49eb49(0x201)]==='development'?_0x49eb49(0x257):'./loadData.js')(_0x1ec084,createLine);await require(_0x49eb49(0x23a))({'api':_0x1ec084,'threadModel':_0x36bde4,'userModel':_0x1fbbbf,'dashBoardModel':_0x5b9356,'globalModel':_0x19aa89,'threadsData':_0x114248,'usersData':_0x3f7323,'dashBoardData':_0x3aefaa,'globalData':_0x58f2d8,'getText':getText}),await require(process[_0x49eb49(0x22e)][_0x49eb49(0x201)]===_0x49eb49(0x19b)?_0x49eb49(0x2b7):'./loadScripts.js')(_0x1ec084,_0x36bde4,_0x1fbbbf,_0x5b9356,_0x19aa89,_0x114248,_0x3f7323,_0x3aefaa,_0x58f2d8,createLine);if(global[_0x49eb49(0x279)][_0x49eb49(0x283)]['autoLoadScripts']?.[_0x49eb49(0x1ef)]==!![]){const _0xb596ac=global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x1f8)][_0x49eb49(0x2a7)]?.[_0x49eb49(0x1f9)](/[ ,]+/g,'\x20')[_0x49eb49(0x223)]()[_0x49eb49(0x1d5)]('\x20')||[],_0x8313ed=global[_0x49eb49(0x279)]['config'][_0x49eb49(0x1f8)][_0x49eb49(0x215)]?.['replace'](/[ ,]+/g,'\x20')[_0x49eb49(0x223)]()[_0x49eb49(0x1d5)]('\x20')||[];watch(process[_0x49eb49(0x18f)]()+_0x49eb49(0x22b),async(_0xad1158,_0x3dd746)=>{const _0x50a987=_0x49eb49;if(_0x3dd746['endsWith'](_0x50a987(0x20a))){if(_0xb596ac['includes'](_0x3dd746)||_0x3dd746[_0x50a987(0x29a)]('.eg.js'))return;if((_0xad1158==_0x50a987(0x1b9)||_0xad1158==_0x50a987(0x225))&&existsSync(process['cwd']()+_0x50a987(0x273)+_0x3dd746))try{const _0x365e7e=global['temp'][_0x50a987(0x218)][_0x50a987(0x1dc)][_0x3dd746]||'',_0x4b501c=readFileSync(process[_0x50a987(0x18f)]()+'/scripts/cmds/'+_0x3dd746,_0x50a987(0x276));if(_0x365e7e==_0x4b501c)return;global[_0x50a987(0x26c)][_0x50a987(0x218)][_0x50a987(0x1dc)][_0x3dd746]=_0x4b501c,_0x3dd746=_0x3dd746[_0x50a987(0x1f9)](_0x50a987(0x20a),'');const _0x2e54a3=global[_0x50a987(0x164)][_0x50a987(0x187)](_0x50a987(0x1dc),_0x3dd746,log,global[_0x50a987(0x279)]['configCommands'],_0x1ec084,_0x36bde4,_0x1fbbbf,_0x5b9356,_0x19aa89,_0x114248,_0x3f7323,_0x3aefaa,_0x58f2d8);_0x2e54a3['status']==_0x50a987(0x2a3)?log[_0x50a987(0x222)](_0x50a987(0x28d),_0x50a987(0x1c8)+_0x3dd746+_0x50a987(0x166)+_0x2e54a3[_0x50a987(0x1c4)][_0x50a987(0x283)][_0x50a987(0x221)]+_0x50a987(0x2b0)):log[_0x50a987(0x171)]('AUTO\x20LOAD\x20SCRIPTS',_0x50a987(0x16a)+_0x3dd746+_0x50a987(0x20a),_0x2e54a3[_0x50a987(0x270)]);}catch(_0x4219a3){log[_0x50a987(0x171)](_0x50a987(0x28d),'Error\x20when\x20reload\x20command\x20'+_0x3dd746+_0x50a987(0x20a),_0x4219a3);}}}),watch(process[_0x49eb49(0x18f)]()+_0x49eb49(0x19a),async(_0x2f0bc6,_0x4c95bb)=>{const _0x505714=_0x49eb49;if(_0x4c95bb[_0x505714(0x29a)](_0x505714(0x20a))){if(_0x8313ed[_0x505714(0x272)](_0x4c95bb)||_0x4c95bb['endsWith'](_0x505714(0x231)))return;if((_0x2f0bc6==_0x505714(0x1b9)||_0x2f0bc6==_0x505714(0x225))&&existsSync(process[_0x505714(0x18f)]()+_0x505714(0x2ad)+_0x4c95bb))try{const _0x396388=global[_0x505714(0x26c)][_0x505714(0x218)][_0x505714(0x260)][_0x4c95bb]||'',_0x415f32=readFileSync(process['cwd']()+'/scripts/events/'+_0x4c95bb,_0x505714(0x276));if(_0x396388==_0x415f32)return;global[_0x505714(0x26c)][_0x505714(0x218)][_0x505714(0x260)][_0x4c95bb]=_0x415f32,_0x4c95bb=_0x4c95bb[_0x505714(0x1f9)](_0x505714(0x20a),'');const _0x3fbb29=global[_0x505714(0x164)][_0x505714(0x187)](_0x505714(0x260),_0x4c95bb,log,global[_0x505714(0x279)]['configCommands'],_0x1ec084,_0x36bde4,_0x1fbbbf,_0x5b9356,_0x19aa89,_0x114248,_0x3f7323,_0x3aefaa,_0x58f2d8);_0x3fbb29[_0x505714(0x1c1)]==_0x505714(0x2a3)?log[_0x505714(0x222)](_0x505714(0x28d),_0x505714(0x254)+_0x4c95bb+_0x505714(0x166)+_0x3fbb29[_0x505714(0x1c4)][_0x505714(0x283)][_0x505714(0x221)]+_0x505714(0x2b0)):log[_0x505714(0x171)](_0x505714(0x28d),_0x505714(0x1be)+_0x4c95bb+_0x505714(0x20a),_0x3fbb29[_0x505714(0x270)]);}catch(_0x5e8b21){log[_0x505714(0x171)](_0x505714(0x28d),'Error\x20when\x20reload\x20event\x20'+_0x4c95bb+_0x505714(0x20a),_0x5e8b21);}}});}if(global[_0x49eb49(0x279)]['config']['dashBoard']?.[_0x49eb49(0x1ef)]==!![]&&dashBoardIsRunning==![]){logColor(_0x49eb49(0x237),createLine(_0x49eb49(0x287)));try{await require(_0x49eb49(0x2ab))(_0x1ec084),log[_0x49eb49(0x203)](_0x49eb49(0x287),getText('login',_0x49eb49(0x170))),dashBoardIsRunning=!![];}catch(_0x343e9c){log[_0x49eb49(0x171)](_0x49eb49(0x287),getText(_0x49eb49(0x1cb),_0x49eb49(0x1e1)),_0x343e9c);}}logColor(_0x49eb49(0x237),character);let _0x5fd950=0x0;const _0x2b9ec4=global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x177)][_0x49eb49(0x1ca)](_0xa065c=>!isNaN(_0xa065c))['map'](_0x8839cd=>_0x8839cd=_0x8839cd[_0x49eb49(0x205)]());for(const _0x3251e3 of _0x2b9ec4){try{const _0x11e1e1=await _0x3f7323['getName'](_0x3251e3);log[_0x49eb49(0x222)](_0x49eb49(0x19c),'['+ ++_0x5fd950+']\x20'+_0x3251e3+_0x49eb49(0x293)+_0x11e1e1);}catch(_0x5ddfc4){log[_0x49eb49(0x222)](_0x49eb49(0x19c),'['+ ++_0x5fd950+']\x20'+_0x3251e3);}}log['master'](_0x49eb49(0x25e),(_0x5e3bfa||'')[_0x49eb49(0x223)]()),log[_0x49eb49(0x222)](_0x49eb49(0x1e4),getText(_0x49eb49(0x1cb),_0x49eb49(0x294))),log['master']('LOAD\x20TIME',''+convertTime(Date[_0x49eb49(0x196)]()-global[_0x49eb49(0x279)][_0x49eb49(0x1c6)])),logColor(_0x49eb49(0x237),createLine('COPYRIGHT')),console[_0x49eb49(0x21f)](_0x49eb49(0x165)),logColor(_0x49eb49(0x237),character),global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x177)]=_0x2b9ec4,writeFileSync(global[_0x49eb49(0x1a7)]['dirConfig'],JSON[_0x49eb49(0x1d6)](global[_0x49eb49(0x279)][_0x49eb49(0x283)],null,0x2)),writeFileSync(global['client'][_0x49eb49(0x227)],JSON[_0x49eb49(0x1d6)](global[_0x49eb49(0x279)]['configCommands'],null,0x2));const {restartListenMqtt:_0x448fb3}=global[_0x49eb49(0x279)][_0x49eb49(0x283)];async function _0x39b664(_0x3c2a02,_0x4add07){const _0x321c4a=_0x49eb49;if(_0x3c2a02){global[_0x321c4a(0x1b7)]=responseUptimeError;if(_0x3c2a02['error']==_0x321c4a(0x208)||_0x3c2a02[_0x321c4a(0x270)]=='Not\x20logged\x20in.'||_0x3c2a02[_0x321c4a(0x270)]=='Connection\x20refused:\x20Server\x20unavailable'){log[_0x321c4a(0x171)](_0x321c4a(0x238),getText('login','notLoggedIn'),_0x3c2a02),global[_0x321c4a(0x1b7)]=responseUptimeError,global[_0x321c4a(0x16d)]=_0x321c4a(0x2b1);!_0x2dc513&&(await handlerWhenListenHasError({'api':_0x1ec084,'threadModel':_0x36bde4,'userModel':_0x1fbbbf,'dashBoardModel':_0x5b9356,'globalModel':_0x19aa89,'threadsData':_0x114248,'usersData':_0x3f7323,'dashBoardData':_0x3aefaa,'globalData':_0x58f2d8,'error':_0x3c2a02}),_0x2dc513=!![]);global[_0x321c4a(0x279)][_0x321c4a(0x283)][_0x321c4a(0x250)]&&process[_0x321c4a(0x1bc)](0x2);return;}else{if(_0x3c2a02==_0x321c4a(0x2aa)||_0x3c2a02==_0x321c4a(0x289))return;else return await handlerWhenListenHasError({'api':_0x1ec084,'threadModel':_0x36bde4,'userModel':_0x1fbbbf,'dashBoardModel':_0x5b9356,'globalModel':_0x19aa89,'threadsData':_0x114248,'usersData':_0x3f7323,'dashBoardData':_0x3aefaa,'globalData':_0x58f2d8,'error':_0x3c2a02}),log['err'](_0x321c4a(0x263),getText(_0x321c4a(0x1cb),_0x321c4a(0x27d)),_0x3c2a02);}}global['responseUptimeCurrent']=responseUptimeSuccess,global[_0x321c4a(0x16d)]=_0x321c4a(0x173);const _0x2828db=global[_0x321c4a(0x279)][_0x321c4a(0x283)]['logEvents'];_0x2dc513==!![]&&(_0x2dc513=![]);if(global[_0x321c4a(0x279)]['config'][_0x321c4a(0x1b6)]?.['enable']==!![]&&global[_0x321c4a(0x279)]['config'][_0x321c4a(0x277)]?.[_0x321c4a(0x1ef)]==!![]&&!global[_0x321c4a(0x279)][_0x321c4a(0x283)][_0x321c4a(0x177)][_0x321c4a(0x272)](_0x4add07[_0x321c4a(0x281)])){if(!global['GoatBot'][_0x321c4a(0x283)]['whiteListMode'][_0x321c4a(0x1d9)][_0x321c4a(0x272)](_0x4add07[_0x321c4a(0x281)])&&!global[_0x321c4a(0x279)]['config'][_0x321c4a(0x277)][_0x321c4a(0x1b5)][_0x321c4a(0x272)](_0x4add07['threadID'])&&!global[_0x321c4a(0x279)][_0x321c4a(0x283)][_0x321c4a(0x177)][_0x321c4a(0x272)](_0x4add07[_0x321c4a(0x281)]))return;}else{if(global['GoatBot'][_0x321c4a(0x283)][_0x321c4a(0x1b6)]?.[_0x321c4a(0x1ef)]==!![]&&!global[_0x321c4a(0x279)][_0x321c4a(0x283)][_0x321c4a(0x1b6)]['whiteListIds']['includes'](_0x4add07['senderID'])&&!global[_0x321c4a(0x279)][_0x321c4a(0x283)][_0x321c4a(0x177)][_0x321c4a(0x272)](_0x4add07[_0x321c4a(0x281)]))return;else{if(global[_0x321c4a(0x279)][_0x321c4a(0x283)]['whiteListModeThread']?.[_0x321c4a(0x1ef)]==!![]&&!global[_0x321c4a(0x279)][_0x321c4a(0x283)]['whiteListModeThread']['whiteListThreadIds'][_0x321c4a(0x272)](_0x4add07['threadID'])&&!global[_0x321c4a(0x279)]['config'][_0x321c4a(0x177)][_0x321c4a(0x272)](_0x4add07[_0x321c4a(0x281)]))return;}}_0x4add07[_0x321c4a(0x21b)]&&_0x4add07['type']==_0x321c4a(0x282)&&(storage5Message['includes'](_0x4add07[_0x321c4a(0x21b)])?Object[_0x321c4a(0x28c)](callbackListenTime)[_0x321c4a(0x1d0)](0x0,-0x1)[_0x321c4a(0x1c7)](_0x5412e1=>{callbackListenTime[_0x5412e1]=()=>{};}):storage5Message[_0x321c4a(0x280)](_0x4add07[_0x321c4a(0x21b)]),storage5Message[_0x321c4a(0x29c)]>0x5&&storage5Message['shift']());if(_0x2828db[_0x321c4a(0x1e6)]===![]&&_0x2828db[_0x4add07[_0x321c4a(0x200)]]!==![]){const _0x3f5943=[..._0x4add07[_0x321c4a(0x1d2)]||[]];_0x4add07['participantIDs']&&(_0x4add07[_0x321c4a(0x1d2)]=_0x321c4a(0x24d)+_0x4add07[_0x321c4a(0x1d2)]['length']+')'),console[_0x321c4a(0x21f)](colors['green']((_0x4add07[_0x321c4a(0x200)]||'')[_0x321c4a(0x210)]()+':'),jsonStringifyColor(_0x4add07,null,0x2)),_0x4add07[_0x321c4a(0x1d2)]&&(_0x4add07[_0x321c4a(0x1d2)]=_0x3f5943);}if(_0x4add07[_0x321c4a(0x281)]&&_0x52eca5[_0x4add07[_0x321c4a(0x281)]]||_0x4add07[_0x321c4a(0x21e)]&&_0x52eca5[_0x4add07['userID']]){if(_0x4add07['body']&&_0x4add07[_0x321c4a(0x179)]){const _0x200fd6=getPrefix(_0x4add07['threadID']);if(_0x4add07[_0x321c4a(0x28a)][_0x321c4a(0x24c)](_0x200fd6))return _0x1ec084[_0x321c4a(0x180)](getText(_0x321c4a(0x1cb),_0x321c4a(0x242)),_0x4add07[_0x321c4a(0x179)]);return;}else return;}const _0x15896c=require(_0x321c4a(0x22a))(_0x1ec084,_0x36bde4,_0x1fbbbf,_0x5b9356,_0x19aa89,_0x3f7323,_0x114248,_0x3aefaa,_0x58f2d8);if(_0x62d51d===![])_0x15896c(_0x4add07);else return log[_0x321c4a(0x171)](_0x321c4a(0x1ba),getText(_0x321c4a(0x1cb),_0x321c4a(0x27a)));}function _0x5e4262(_0xbe2db6){const _0x4737b6=_0x49eb49;return _0xbe2db6=randomString(0xa)+(_0xbe2db6||Date[_0x4737b6(0x196)]()),callbackListenTime[_0xbe2db6]=_0x39b664,function(_0x3506e0,_0x980231){callbackListenTime[_0xbe2db6](_0x3506e0,_0x980231);};}await stopListening(),global[_0x49eb49(0x279)][_0x49eb49(0x1e3)]=_0x1ec084['listenMqtt'](_0x5e4262()),global[_0x49eb49(0x279)]['callBackListen']=_0x39b664;if(global[_0x49eb49(0x279)][_0x49eb49(0x283)]['serverUptime']['enable']==!![]&&!global['GoatBot']['config']['dashBoard']?.[_0x49eb49(0x1ef)]&&!global[_0x49eb49(0x295)]){const _0x8725bd=require(_0x49eb49(0x185)),_0x2bd489=require('express'),_0x3c428d=_0x2bd489(),_0x3ad0ed=_0x8725bd[_0x49eb49(0x27b)](_0x3c428d),{data:_0x38ceb8}=await axios[_0x49eb49(0x2ae)](_0x49eb49(0x20b)),_0xdddaa=global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x1f0)]?.[_0x49eb49(0x1bd)]||!isNaN(global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x1a9)][_0x49eb49(0x1bd)])&&global[_0x49eb49(0x279)][_0x49eb49(0x283)]['serverUptime'][_0x49eb49(0x1bd)]||0xbb9;_0x3c428d[_0x49eb49(0x2ae)]('/',(_0x1d4e70,_0x289f5a)=>_0x289f5a[_0x49eb49(0x1f4)](_0x38ceb8)),_0x3c428d['get'](_0x49eb49(0x1b3),global[_0x49eb49(0x1b7)]);let _0x432a11;try{_0x432a11=_0x49eb49(0x194)+(process[_0x49eb49(0x22e)]['REPL_OWNER']?process[_0x49eb49(0x22e)][_0x49eb49(0x1b8)]+'.'+process[_0x49eb49(0x22e)][_0x49eb49(0x176)]+'.repl.co':process[_0x49eb49(0x22e)][_0x49eb49(0x190)]==_0x49eb49(0x2b2)?process[_0x49eb49(0x22e)]['PROJECT_DOMAIN']+_0x49eb49(0x183):_0x49eb49(0x204)+_0xdddaa),_0x432a11['includes'](_0x49eb49(0x233))&&(_0x432a11=_0x432a11['replace'](_0x49eb49(0x1a8),_0x49eb49(0x185))),await _0x3ad0ed[_0x49eb49(0x1e7)](_0xdddaa),log[_0x49eb49(0x203)](_0x49eb49(0x1cf),getText('login',_0x49eb49(0x2b3),_0x432a11)),global[_0x49eb49(0x279)][_0x49eb49(0x283)][_0x49eb49(0x1a9)][_0x49eb49(0x202)]?.[_0x49eb49(0x1ef)]==!![]&&require(_0x49eb49(0x1ff))(_0x3ad0ed),global[_0x49eb49(0x295)]=!![];}catch(_0x2f9bc4){log[_0x49eb49(0x171)](_0x49eb49(0x1cf),getText('login',_0x49eb49(0x241)),_0x2f9bc4);}}if(_0x448fb3[_0x49eb49(0x1ef)]==!![]){_0x448fb3[_0x49eb49(0x299)]==!![]&&(log[_0x49eb49(0x203)](_0x49eb49(0x263),getText(_0x49eb49(0x1cb),_0x49eb49(0x23f),convertTime(_0x448fb3[_0x49eb49(0x236)],!![]))),log['info'](_0x49eb49(0x1a1),getText(_0x49eb49(0x1cb),_0x49eb49(0x23e))),logColor(_0x49eb49(0x237),character));const _0x100a8c=setInterval(async function(){const _0x8041f9=_0x49eb49;if(_0x448fb3[_0x8041f9(0x1ef)]==![])return clearInterval(_0x100a8c),log[_0x8041f9(0x243)](_0x8041f9(0x263),getText(_0x8041f9(0x1cb),_0x8041f9(0x22d)));try{await stopListening(),await sleep(0x3e8),global[_0x8041f9(0x279)][_0x8041f9(0x1e3)]=_0x1ec084[_0x8041f9(0x1f1)](_0x5e4262()),log['info'](_0x8041f9(0x263),getText(_0x8041f9(0x1cb),_0x8041f9(0x245)));}catch(_0x53a7f8){log[_0x8041f9(0x171)](_0x8041f9(0x263),getText(_0x8041f9(0x1cb),_0x8041f9(0x1ac)),_0x53a7f8);}},_0x448fb3[_0x49eb49(0x236)]);global[_0x49eb49(0x16b)]=_0x100a8c;}require(_0x49eb49(0x1ee));});}(_0x716e04),global[_0x13fbe6(0x279)][_0x13fbe6(0x283)]['autoReloginWhenChangeAccount']&&setTimeout(function(){watch(dirAccount,async _0x40db24=>{const _0x29d4d7=_0x2dcf;_0x40db24=='change'&&changeFbStateByCode==![]&&latestChangeContentAccount!=fs[_0x29d4d7(0x278)](dirAccount)[_0x29d4d7(0x217)]&&(clearInterval(global['intervalRestartListenMqtt']),global['compulsoryStopLisening']=!![],latestChangeContentAccount=fs[_0x29d4d7(0x278)](dirAccount)['mtimeMs'],startBot());});},0x2710);}function _0x1002(){const _0x16179c=['startBotSuccess','restartListenMessage','Cookie\x20is\x20invalid','openServerUptimeError','userBanned','warn','21964266iYdJCW','restartListenMessage2','input2FA','.jpg','test','COOKIE_INVALID','gbanMessage','toDate','startsWith','Array(','continue','loginSuccess','autoRestartWhenListenMqttError','totp-generator','botID','utc_datetime','Event\x20','write','facebook.com','./loadData.dev.js','stderr','loginCookieString','hasOwnProperty','canvas','qrcode-reader','./getFbstate.js','NOTIFICATION','line','events','x-referer','loginPassword','LISTEN_MQTT','close','match','loadImage','LANGUAGE','basename','clearLine','loginError','2FASecret','temp','PROJECT\x20VERSION','GOAT\x20BOT','yellowBright','error','ACCOUNT\x20INFO','includes','/scripts/cmds/','dirAccount','██████╗\x20\x20██████╗\x20\x20█████╗\x20████████╗\x20\x20\x20\x20██╗\x20\x20\x20██╗██████╗','utf-8','whiteListModeThread','statSync','GoatBot','youAreBanned','createServer','createCanvas','callBackError','i_user','fill','push','senderID','message','config','EAAAA','join','aliases','DASHBOARD','8evfLaj','Connection\x20closed\x20by\x20user.','body','8685830cQfpAl','keys','AUTO\x20LOAD\x20SCRIPTS','utf8','output','./handlerWhenListenHasError.js','\x1b[?25h\x0a','json','\x20|\x20','runBot','serverUptimeRunning','NODE\x20VERSION','https://raw.githubusercontent.com/ntkhang03/Goat-Bot-V2-Storage/main/tooOldVersions.txt','>\x20(','logNoti','endsWith','#f12711','length','keypress','.jpeg','node\x20update','1748uOcyIC','getTime','ERROR','success','██║\x20\x20███╗██║\x20\x20\x20██║███████║\x20\x20\x20██║\x20\x20\x20\x20\x20\x20\x20██║\x20\x20\x20██║\x20█████╔╝','5508024NLYKwK','inputCookieString','ignoreCmds','./getFbstate1.js','cookieError','Connection\x20closed.','../../dashboard/app.js','_start','/scripts/events/','get','LOGIN\x20FACEBOOK',')\x20has\x20been\x20reloaded','can\x27t\x20login','https://api.glitch.com','openServerUptimeSuccess','notFoundDirAccount','createInterface','creation','./loadScripts.dev.js','http://worldtimeapi.org/api/timezone/UTC','utils','\x1b[1m\x1b[33mCOPYRIGHT:\x1b[0m\x1b[1m\x1b[37m\x20\x1b[0m\x1b[1m\x1b[36mProject\x20GoatBot\x20v2\x20created\x20by\x20ntkhang03\x20(https://github.com/ntkhang03),\x20please\x20do\x20not\x20sell\x20this\x20source\x20code\x20or\x20claim\x20it\x20as\x20your\x20own.\x20Thank\x20you!\x1b[0m','.js\x20(','./checkLiveCookie.js','Created\x20by\x20NTKhang\x20with\x20♡','fcaApi','Error\x20when\x20reload\x20command\x20','intervalRestartListenMqtt','moveCursor','statusAccountBot','BOT\x20NICK\x20NAME','prefix','openDashboardSuccess','err','uptime','good','#2BD2FF','readline','REPL_OWNER','adminBot','\x1b[?25l','threadID','post','onReply','currentlyLogged','normalize','GOATBOT\x20V2','██╔════╝\x20██╔═══██╗██╔══██╗╚══██╔══╝\x20\x20\x20\x20██║\x20\x20\x20██║╚════██╗','sendMessage','loginWith','key','.glitch.me','>\x20Enter\x202FA\x20code\x20or\x20secret:\x20','http','10710014SMrMcy','loadScripts','(empty)','width','checkGbanError','parse','callback','from','removeAllListeners','cwd','API_SERVER_EXTERNAL','onEvent','readQrCode','1541742sPLzBv','https://','getCurrentUserID','now','blueBright','Source\x20code:\x20https://github.com/ntkhang03/Goat-Bot-V2','floor','/scripts/events','development','ADMINBOT','Appstate\x20Cookie\x20Is\x20Missing.','base64','lastAccessed','toISOString','BOT_STARTED','VERSION','hex','language','repeat','inputEmail','client','https','serverUptime','stopListening','stdin','restartListenMessageError','inputPassword','#AFF6CF','commands','./loginMbasic.dev.js','FCA\x20Fix\x20By\x20Priyanshu\x20Rajput','dirConfig','/uptime','data','whiteListThreadIds','whiteListMode','responseUptimeCurrent','REPL_SLUG','change','GBAN','_stop','exit','port','Error\x20when\x20reload\x20event\x20','cursorTo','Hello\x20World!','status','reLoginBot','#FA8BFF','command','-\x20A\x20simple\x20Bot\x20chat\x20messenger\x20use\x20personal\x20account','startTime','forEach','Command\x20','some','filter','login','Email:\x20','responseUptimeError','seconds','UPTIME','slice','NFD','participantIDs','result','cannotFindAccount','split','stringify','axios','ALL\x20VERSIONS\x20NOT\x20RELEASED\x20HERE\x20ARE\x20FAKE','whiteListIds','gradient-string','██║\x20\x20\x20██║██║\x20\x20\x20██║██╔══██║\x20\x20\x20██║\x20\x20\x20\x20\x20\x20\x20╚██╗\x20██╔╝██╔═══╝','cmds','.png','START\x20LOGGING\x20IN','./getFbstate1.dev.js','input','openDashboardError','stdout','Listening','SUCCESS','\x1b]2;Goat\x20Bot\x20V2\x20-\x20Made\x20by\x20NTKhang\x1b\x5c','disableAll','listen','fs-extra','/package.json','TRUE','path','string','map','../autoUptime.js','enable','dashBoard','listenMqtt','#2BFF88','email','send','\x20is\x20invalid','lastIndexOf','date','autoLoadScripts','replace','enter','optionsFca','chooseAccount','GoatBot\x20V2@','onReaction','./socketIO.js','type','NODE_ENV','socket','info','localhost:','toString','APPSTATE','pop','Not\x20logged\x20in','\x1b[1D','.js','https://raw.githubusercontent.com/ntkhang03/resources-goat-bot/master/homepage/home.html','domain','./loginMbasic.js','737PCIXue','chooseToken','toUpperCase','facebookAccount','columns','value','../../package.json','ignoreEvents','╚═════╝\x20\x20╚═════╝\x20╚═╝\x20\x20╚═╝\x20\x20\x20╚═╝\x20\x20\x20\x20\x20\x20\x20\x20\x20╚═══╝\x20\x20╚══════╝','mtimeMs','contentScripts','eventCommands','userAgent','messageID','version','green','userID','log','height','name','master','trim','toLowerCase','rename','decode','dirConfigCommands','5019324YsttbQ','reason','../handler/handlerAction.js','/scripts/cmds','PREFIX','stopRestartListenMessage','env','password','clearScreenDown','.eg.js','onChat','localhost','TOKEN_ERROR',',\x20I_User:\x20','timeRestart','#f5ab00','NOT\x20LOGGEG\x20IN','G\x20O\x20A\x20T\x20B\x20O\x20T\x20\x20V\x202\x20@','../custom.js','#9F98E8','inputCookieArray','account.txt'];_0x1002=function(){return _0x16179c;};return _0x1002();}global[_0x1fc2b6(0x279)][_0x1fc2b6(0x1c2)]=startBot,startBot();
+const defaultRequire = require;
+
+function decode(text) {
+  text = Buffer.from(text, "hex").toString("utf8");
+  text = Buffer.from(text, "hex").toString("utf8");
+  text = Buffer.from(text, "base64").toString("utf8");
+  return text;
+}
+
+const gradient = defaultRequire("gradient-string");
+const axios = defaultRequire("axios");
+const path = defaultRequire("path");
+const readline = defaultRequire("readline");
+const fs = defaultRequire("fs-extra");
+const toptp = defaultRequire("totp-generator");
+const login = defaultRequire("fca-nx");
+const qr = new (defaultRequire("qrcode-reader"))();
+const Canvas = defaultRequire("canvas");
+const https = defaultRequire("https");
+
+async function getName(userID) {
+  try {
+    const user = await axios.post(
+      `https://www.facebook.com/api/graphql/?q=node(${userID}){name}`
+    );
+    return user.data[userID].name;
+  } catch (error) {
+    return null;
+  }
+}
+
+function compareVersion(version1, version2) {
+  const v1 = version1.split(".");
+  const v2 = version2.split(".");
+  for (let i = 0; i < 3; i++) {
+    if (parseInt(v1[i]) > parseInt(v2[i])) return 1;
+    if (parseInt(v1[i]) < parseInt(v2[i])) return -1;
+  }
+  return 0;
+}
+
+const { writeFileSync, readFileSync, existsSync, watch } = require("fs-extra");
+const handlerWhenListenHasError = require("./handlerWhenListenHasError.js");
+const checkLiveCookie = require("./checkLiveCookie.js");
+const { callbackListenTime, storage5Message } = global.GoatBot;
+const {
+  log,
+  logColor,
+  getPrefix,
+  createOraDots,
+  jsonStringifyColor,
+  getText,
+  convertTime,
+  colors,
+  randomString
+} = global.utils;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const currentVersion = require(`${process.cwd()}/package.json`).version;
+
+function centerText(text, length) {
+  const width = process.stdout.columns || 50;
+  const leftPadding = Math.floor((width - (length || text.length)) / 2);
+  const rightPadding = width - leftPadding - (length || text.length);
+  const paddedString =
+    " ".repeat(leftPadding > 0 ? leftPadding : 0) +
+    text +
+    " ".repeat(rightPadding > 0 ? rightPadding : 0);
+  console.log(paddedString);
+}
+
+const titles = [
+  [
+    " ██████╗  ██████╗  █████╗ ████████╗██████╗  ██████╗ ████████╗    ██╗   ██╗██████╗ ",
+    "██╔════╝ ██╔═══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝    ██║   ██║╚════██╗",
+    "██║  ███╗██║   ██║███████║   ██║   ██████╔╝██║   ██║   ██║       ██║   ██║ █████╔╝",
+    "██║   ██║██║   ██║██╔══██║   ██║   ██╔══██╗██║   ██║   ██║       ╚██╗ ██╔╝██╔═══╝ ",
+    "╚██████╔╝╚██████╔╝██║  ██║   ██║   ██████╔╝╚██████╔╝   ██║        ╚████╔╝ ███████╗",
+    " ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═════╝  ╚═════╝    ╚═╝         ╚═══╝  ╚══════╝"
+  ],
+  [
+    "█▀▀ █▀█ ▄▀█ ▀█▀  █▄▄ █▀█ ▀█▀  ▀▄▀ █▄",
+    "█▄█ █▄█ █▀█ ░█░  █▄█ █▄█ ░█░  █░█ ▀█"
+  ],
+  ["G O A T B O T  V 2 @" + currentVersion],
+  ["GOATBOT V2"]
+];
+
+const maxWidth = process.stdout.columns || 50;
+const title =
+  maxWidth > 58
+    ? titles[0]
+    : maxWidth > 36
+    ? titles[1]
+    : maxWidth > 22
+    ? titles[2]
+    : titles[3];
+
+let widthConsole = process.stdout.columns || 50;
+if (widthConsole > 50) widthConsole = 50;
+
+function createLine(content, isMaxWidth = false) {
+  const targetWidth = isMaxWidth ? process.stdout.columns || 50 : widthConsole;
+  if (!content) {
+    return Array(targetWidth).fill("─").join("");
+  } else {
+    content = ` ${content.trim()} `;
+    const lengthContent = content.length;
+    const lengthLine = targetWidth - lengthContent;
+    let left = Math.floor(lengthLine / 2);
+    if (left < 0 || isNaN(left)) left = 0;
+    const lineOne = Array(left).fill("─").join("");
+    return lineOne + content + lineOne;
+  }
+}
+
+console.log(gradient("#f5af19", "#f12711")(createLine(null, true)));
+console.log();
+
+for (const text of title) {
+  const textColor = gradient("#FA8BFF", "#2BD2FF", "#2BFF88")(text);
+  centerText(textColor, text.length);
+}
+
+let subTitle = `GoatBot V2@${currentVersion} - A simple Bot chat messenger use personal account`;
+const subTitleArray = [];
+
+if (subTitle.length > maxWidth) {
+  while (subTitle.length > maxWidth) {
+    let lastSpace = subTitle.slice(0, maxWidth).lastIndexOf(" ");
+    lastSpace = lastSpace == -1 ? maxWidth : lastSpace;
+    subTitleArray.push(subTitle.slice(0, lastSpace).trim());
+    subTitle = subTitle.slice(lastSpace).trim();
+  }
+  subTitle ? subTitleArray.push(subTitle) : "";
+} else {
+  subTitleArray.push(subTitle);
+}
+
+const author = "Created by NTKhang with ♡";
+const srcUrl = "Source code: https://github.com/ntkhang03/Goat-Bot-V2";
+const fakeRelease = "ALL VERSIONS NOT RELEASED HERE ARE FAKE";
+
+for (const t of subTitleArray) {
+  const textColor2 = gradient("#9F98E8", "#AFF6CF")(t);
+  centerText(textColor2, t.length);
+}
+
+centerText(gradient("#9F98E8", "#AFF6CF")(author), author.length);
+centerText(gradient("#9F98E8", "#AFF6CF")(srcUrl), srcUrl.length);
+centerText(gradient("#f5ab00", "#f12711")(fakeRelease), fakeRelease.length);
+
+const character = createLine();
+
+const clearLines = (n) => {
+  for (let i = 0; i < n; i++) {
+    const y = i === 0 ? null : -1;
+    process.stdout.moveCursor?.(0, y);
+    process.stdout.clearLine?.(1);
+  }
+  process.stdout.cursorTo?.(0);
+  process.stdout.write("");
+};
+
+async function input(prompt, isPassword = false) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  if (isPassword) {
+    rl.input.on("keypress", function () {
+      const len = rl.line.length;
+      readline.moveCursor(rl.output, -len, 0);
+      readline.clearLine(rl.output, 1);
+      for (let i = 0; i < len; i++) {
+        rl.output.write("*");
+      }
+    });
+  }
+
+  return new Promise((resolve) =>
+    rl.question(prompt, (answer) => {
+      rl.close();
+      resolve(answer);
+    })
+  );
+}
+
+qr.readQrCode = async function (filePath) {
+  const image = await Canvas.loadImage(filePath);
+  const canvas = Canvas.createCanvas(image.width, image.height);
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(image, 0, 0);
+  const data = ctx.getImageData(0, 0, image.width, image.height);
+  let value;
+  qr.callback = function (err, v) {
+    if (err) throw err;
+    value = v;
+  };
+  qr.decode(data);
+  return value.result;
+};
+
+const { dirAccount } = global.client;
+const { facebookAccount } = global.GoatBot.config;
+
+function responseUptimeSuccess(req, res) {
+  res.type("json").send({
+    status: "success",
+    uptime: process.uptime(),
+    unit: "seconds"
+  });
+}
+
+function responseUptimeError(req, res) {
+  res.status(500).type("json").send({
+    status: "error",
+    uptime: process.uptime(),
+    statusAccountBot: global.statusAccountBot
+  });
+}
+
+function checkAndTrimString(string) {
+  if (typeof string == "string") return string.trim();
+  return string;
+}
+
+function filterKeysAppState(appState) {
+  return appState.filter((item) =>
+    ["c_user", "xs", "datr", "fr", "sb", "i_user"].includes(item.key)
+  );
+}
+
+global.responseUptimeSuccess = responseUptimeSuccess;
+global.responseUptimeCurrent = responseUptimeSuccess;
+global.responseUptimeError = responseUptimeError;
+global.statusAccountBot = "good";
+
+let changeFbStateByCode = false;
+let latestChangeContentAccount = existsSync(dirAccount)
+  ? fs.statSync(dirAccount).mtimeMs
+  : 0;
+let dashBoardIsRunning = false;
+
+function pushI_user(appState, value) {
+  appState.push({
+    key: "i_user",
+    value: value || facebookAccount.i_user,
+    domain: "facebook.com",
+    path: "/",
+    hostOnly: false,
+    creation: new Date().toISOString(),
+    lastAccessed: new Date().toISOString()
+  });
+  return appState;
+}
+
+function stopListening(keyListen) {
+  keyListen = keyListen || Object.keys(callbackListenTime).pop();
+  if (callbackListenTime[keyListen]) {
+    callbackListenTime[keyListen] = () => {};
+  }
+  return new Promise((resolve) => {
+    try {
+      const stopFn =
+        global.GoatBot.listening?.stopListening ||
+        global.GoatBot.fcaApi?.stopListening;
+
+      if (typeof stopFn === "function") {
+        const res = stopFn(() => resolve());
+        if (res && typeof res.then === "function") {
+          res.then(resolve).catch(resolve);
+        } else if (stopFn.length === 0) {
+          resolve();
+        }
+      } else {
+        resolve();
+      }
+    } catch {
+      resolve();
+    }
+  });
+}
+
+async function startBot() {
+  console.log(colors.hex("#f5ab00")(createLine("START LOGGING IN", true)));
+  const currentVersion = require("../../package.json").version;
+
+  // Safe version check: won't crash if GitHub repo returns 404
+  try {
+    const res = await axios.get(
+      "https://raw.githubusercontent.com/ntkhang03/Goat-Bot-V2/master/tooOldVersions.txt",
+      { timeout: 5000 }
+    );
+    const tooOldVersion = res.data || "0.0.0";
+    if ([-1, 0].includes(compareVersion(currentVersion, tooOldVersion))) {
+      log.err(
+        "VERSION",
+        getText("version", "tooOldVersion", colors.yellowBright("node update"))
+      );
+    }
+  } catch {
+    // Ignore 404 from dead upstream repository
+  }
+
+  if (global.GoatBot.fcaApi) {
+    await stopListening();
+  }
+
+  log.info("LOGIN FACEBOOK", getText("login", "currentlyLogged"));
+  log.info("FCA", "Running with FCA-NX");
+
+  let appState;
+  try {
+    const appStateFile = existsSync(dirAccount)
+      ? dirAccount
+      : path.resolve(process.cwd(), "account.txt");
+    const accountData = fs.readFileSync(appStateFile, "utf8");
+    appState = JSON.parse(accountData);
+    log.info("APPSTATE", "Appstate Cookie Is Available");
+  } catch (err) {
+    return log.error("APPSTATE", "Appstate Cookie Is Missing or Invalid JSON.");
+  }
+
+  changeFbStateByCode = true;
+
+  (function loginBot(appState) {
+    global.GoatBot.commands = new Map();
+    global.GoatBot.eventCommands = new Map();
+    global.GoatBot.aliases = new Map();
+    global.GoatBot.onChat = [];
+    global.GoatBot.onEvent = [];
+    global.GoatBot.onReply = new Map();
+    global.GoatBot.onReaction = new Map();
+    clearInterval(global.intervalRestartListenMqtt);
+    delete global.intervalRestartListenMqtt;
+
+    if (facebookAccount.i_user) {
+      pushI_user(appState, facebookAccount.i_user);
+    }
+
+    let isSendNotiErrorMessage = false;
+
+    login({ appState }, global.GoatBot.config.optionsFca, async function (err, api) {
+      if (err || !api) {
+        log.err(
+          "LOGIN FACEBOOK",
+          getText("login", "loginError"),
+          err?.error || err?.message || err
+        );
+        return;
+      }
+
+      global.GoatBot.fcaApi = api;
+      global.GoatBot.botID = api.getCurrentUserID();
+      log.info("LOGIN FACEBOOK", getText("login", "loginSuccess"));
+
+      let hasBanned = false;
+      global.botID = api.getCurrentUserID();
+
+      logColor("#f5ab00", createLine("BOT INFO"));
+      log.info("NODE VERSION", process.version);
+      log.info("PROJECT VERSION", currentVersion);
+      log.info("BOT ID", `${global.botID} - ${await getName(global.botID)}`);
+      log.info("PREFIX", global.GoatBot.config.prefix);
+      log.info("LANGUAGE", global.GoatBot.config.language);
+      log.info("BOT NICK NAME", global.GoatBot.config.nickNameBot || "GOAT BOT");
+
+      // Safe GBAN fallback (does not exit if GitHub returns 404)
+      let dataGban = {};
+      try {
+        const item = await axios.get(
+          "https://raw.githubusercontent.com/ntkhang03/Goat-Bot-V2-Gban/master/gban.json",
+          { timeout: 5000 }
+        );
+        dataGban = item.data || {};
+      } catch {
+        dataGban = {};
+      }
+
+      // Safe notification fetch (does not exit if GitHub returns 404)
+      let notification = "";
+      try {
+        const getNoti = await axios.get(
+          "https://raw.githubusercontent.com/ntkhang03/Goat-Bot-V2/master/notification.txt",
+          { timeout: 5000 }
+        );
+        notification = getNoti.data || "";
+      } catch {
+        notification = "";
+      }
+
+      const {
+        threadModel,
+        userModel,
+        dashBoardModel,
+        globalModel,
+        threadsData,
+        usersData,
+        dashBoardData,
+        globalData,
+        sequelize
+      } = await require(
+        process.env.NODE_ENV === "development"
+          ? "./loadData.dev.js"
+          : "./loadData.js"
+      )(api, createLine);
+
+      await require("../custom.js")({
+        api,
+        threadModel,
+        userModel,
+        dashBoardModel,
+        globalModel,
+        threadsData,
+        usersData,
+        dashBoardData,
+        globalData,
+        getText
+      });
+
+      await require(
+        process.env.NODE_ENV === "development"
+          ? "./loadScripts.dev.js"
+          : "./loadScripts.js"
+      )(
+        api,
+        threadModel,
+        userModel,
+        dashBoardModel,
+        globalModel,
+        threadsData,
+        usersData,
+        dashBoardData,
+        globalData,
+        createLine
+      );
+
+      if (global.GoatBot.config.autoLoadScripts?.enable == true) {
+        const ignoreCmds =
+          global.GoatBot.config.autoLoadScripts.ignoreCmds
+            ?.replace(/[ ,]+/g, " ")
+            .trim()
+            .split(" ") || [];
+        const ignoreEvents =
+          global.GoatBot.config.autoLoadScripts.ignoreEvents
+            ?.replace(/[ ,]+/g, " ")
+            .trim()
+            .split(" ") || [];
+
+        watch(`${process.cwd()}/scripts/cmds`, async (event, filename) => {
+          if (filename && filename.endsWith(".js")) {
+            if (ignoreCmds.includes(filename) || filename.endsWith(".eg.js"))
+              return;
+            if (
+              (event == "change" || event == "rename") &&
+              existsSync(`${process.cwd()}/scripts/cmds/${filename}`)
+            ) {
+              try {
+                const contentCommand =
+                  global.temp.contentScripts.cmds[filename] || "";
+                const currentContent = readFileSync(
+                  `${process.cwd()}/scripts/cmds/${filename}`,
+                  "utf-8"
+                );
+                if (contentCommand == currentContent) return;
+                global.temp.contentScripts.cmds[filename] = currentContent;
+                filename = filename.replace(".js", "");
+
+                const infoLoad = global.utils.loadScripts(
+                  "cmds",
+                  filename,
+                  log,
+                  global.GoatBot.configCommands,
+                  api,
+                  threadModel,
+                  userModel,
+                  dashBoardModel,
+                  globalModel,
+                  threadsData,
+                  usersData,
+                  dashBoardData,
+                  globalData
+                );
+                if (infoLoad.status == "success") {
+                  log.master(
+                    "AUTO LOAD SCRIPTS",
+                    `Command ${filename}.js (${infoLoad.command.config.name}) has been reloaded`
+                  );
+                } else {
+                  log.err(
+                    "AUTO LOAD SCRIPTS",
+                    `Error when reload command ${filename}.js`,
+                    infoLoad.error
+                  );
+                }
+              } catch (err) {
+                log.err(
+                  "AUTO LOAD SCRIPTS",
+                  `Error when reload command ${filename}.js`,
+                  err
+                );
+              }
+            }
+          }
+        });
+
+        watch(`${process.cwd()}/scripts/events`, async (event, filename) => {
+          if (filename && filename.endsWith(".js")) {
+            if (
+              ignoreEvents.includes(filename) ||
+              filename.endsWith(".eg.js")
+            )
+              return;
+            if (
+              (event == "change" || event == "rename") &&
+              existsSync(`${process.cwd()}/scripts/events/${filename}`)
+            ) {
+              try {
+                const contentEvent =
+                  global.temp.contentScripts.events[filename] || "";
+                const currentContent = readFileSync(
+                  `${process.cwd()}/scripts/events/${filename}`,
+                  "utf-8"
+                );
+                if (contentEvent == currentContent) return;
+                global.temp.contentScripts.events[filename] = currentContent;
+                filename = filename.replace(".js", "");
+
+                const infoLoad = global.utils.loadScripts(
+                  "events",
+                  filename,
+                  log,
+                  global.GoatBot.configCommands,
+                  api,
+                  threadModel,
+                  userModel,
+                  dashBoardModel,
+                  globalModel,
+                  threadsData,
+                  usersData,
+                  dashBoardData,
+                  globalData
+                );
+                if (infoLoad.status == "success") {
+                  log.master(
+                    "AUTO LOAD SCRIPTS",
+                    `Event ${filename}.js (${infoLoad.command.config.name}) has been reloaded`
+                  );
+                } else {
+                  log.err(
+                    "AUTO LOAD SCRIPTS",
+                    `Error when reload event ${filename}.js`,
+                    infoLoad.error
+                  );
+                }
+              } catch (err) {
+                log.err(
+                  "AUTO LOAD SCRIPTS",
+                  `Error when reload event ${filename}.js`,
+                  err
+                );
+              }
+            }
+          }
+        });
+      }
+
+      if (
+        global.GoatBot.config.dashBoard?.enable == true &&
+        dashBoardIsRunning == false
+      ) {
+        logColor("#f5ab00", createLine("DASHBOARD"));
+        try {
+          await require("../../dashboard/app.js")(api);
+          log.info("DASHBOARD", getText("startBot", "openDashboardSuccess"));
+          dashBoardIsRunning = true;
+        } catch (err) {
+          log.err("DASHBOARD", getText("startBot", "openDashboardError"), err);
+        }
+      }
+
+      logColor("#f5ab00", character);
+      let i = 0;
+      const adminBot = global.GoatBot.config.adminBot
+        .filter((item) => !isNaN(item))
+        .map((item) => (item = item.toString()));
+
+      for (const uid of adminBot) {
+        try {
+          const userName = await usersData.getName(uid);
+          log.master("ADMINBOT", `[${++i}] ${uid} | ${userName}`);
+        } catch (e) {
+          log.master("ADMINBOT", `[${++i}] ${uid}`);
+        }
+      }
+
+      if (notification) log.master("NOTIFICATION", notification.trim());
+      log.master("SUCCESS", getText("startBot", "startBotSuccess"));
+      log.master(
+        "LOAD TIME",
+        `${convertTime(Date.now() - global.GoatBot.startTime)}`
+      );
+      logColor("#f5ab00", createLine("COPYRIGHT"));
+      console.log(
+        `\x1b[1m\x1b[33mCOPYRIGHT:\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[36mProject GoatBot v2 created by ntkhang03 (https://github.com/ntkhang03), please do not sell this source code or claim it as your own. Thank you!\x1b[0m`
+      );
+      logColor("#f5ab00", character);
+
+      global.GoatBot.config.adminBot = adminBot;
+      writeFileSync(
+        global.client.dirConfig,
+        JSON.stringify(global.GoatBot.config, null, 2)
+      );
+      writeFileSync(
+        global.client.dirConfigCommands,
+        JSON.stringify(global.GoatBot.configCommands, null, 2)
+      );
+
+      const { restartListenMqtt } = global.GoatBot.config;
+
+      async function callBackListen(error, event) {
+        if (error) {
+          global.responseUptimeCurrent = responseUptimeError;
+          if (
+            error === "Connection closed." ||
+            error === "Connection closed by user." ||
+            error === "Connection refused: Server unavailable"
+          ) {
+            log.err(
+              "LISTEN_MQTT",
+              getText("startBot", "listenMqttError"),
+              error
+            );
+            global.responseUptimeCurrent = responseUptimeError;
+            global.statusAccountBot = "can't login";
+
+            if (!isSendNotiErrorMessage) {
+              await handlerWhenListenHasError({
+                api,
+                threadModel,
+                userModel,
+                dashBoardModel,
+                globalModel,
+                threadsData,
+                usersData,
+                dashBoardData,
+                globalData,
+                error
+              });
+              isSendNotiErrorMessage = true;
+            }
+
+            if (global.GoatBot.config.autoRestartWhenListenMqttError) {
+              process.exit(2);
+            }
+            return;
+          } else if (
+            error == "Connection closed by user." ||
+            error == "StopListening"
+          ) {
+            return;
+          } else {
+            await handlerWhenListenHasError({
+              api,
+              threadModel,
+              userModel,
+              dashBoardModel,
+              globalModel,
+              threadsData,
+              usersData,
+              dashBoardData,
+              globalData,
+              error
+            });
+            return log.err(
+              "LISTEN_MQTT",
+              getText("startBot", "callBackError"),
+              error
+            );
+          }
+        }
+
+        if (!event) return;
+
+        global.responseUptimeCurrent = responseUptimeSuccess;
+        global.statusAccountBot = "good";
+        const configLog = global.GoatBot.config.logEvents;
+
+        if (isSendNotiErrorMessage == true) isSendNotiErrorMessage = false;
+
+        if (
+          global.GoatBot.config.whiteListMode?.enable == true &&
+          global.GoatBot.config.whiteListModeThread?.enable == true &&
+          !global.GoatBot.config.adminBot.includes(event.senderID)
+        ) {
+          if (
+            !global.GoatBot.config.whiteListModeThread.whiteListThreadIds.includes(
+              event.threadID
+            ) &&
+            !global.GoatBot.config.whiteListMode.whiteListIds.includes(
+              event.senderID
+            ) &&
+            !global.GoatBot.config.adminBot.includes(event.senderID)
+          ) {
+            return;
+          }
+        } else if (
+          global.GoatBot.config.whiteListMode?.enable == true &&
+          !global.GoatBot.config.whiteListMode.whiteListIds.includes(
+            event.senderID
+          ) &&
+          !global.GoatBot.config.adminBot.includes(event.senderID)
+        ) {
+          return;
+        } else if (
+          global.GoatBot.config.whiteListModeThread?.enable == true &&
+          !global.GoatBot.config.whiteListModeThread.whiteListThreadIds.includes(
+            event.threadID
+          ) &&
+          !global.GoatBot.config.adminBot.includes(event.senderID)
+        ) {
+          return;
+        }
+
+        if (event.messageID && event.type == "message") {
+          if (storage5Message.includes(event.messageID)) {
+            Object.keys(callbackListenTime)
+              .slice(0, -1)
+              .forEach((key) => {
+                callbackListenTime[key] = () => {};
+              });
+          } else {
+            storage5Message.push(event.messageID);
+          }
+          if (storage5Message.length > 5) storage5Message.shift();
+        }
+
+        if (configLog.disableAll === false && configLog[event.type] !== false) {
+          const participantIDs = [...(event.participantIDs || [])];
+          if (event.participantIDs) {
+            event.participantIDs = `Array(${event.participantIDs.length})`;
+          }
+          console.log(
+            colors.green(`${(event.type || "").toUpperCase()}:`),
+            jsonStringifyColor(event, null, 2)
+          );
+          if (event.participantIDs) {
+            event.participantIDs = participantIDs;
+          }
+        }
+
+        if (
+          (event.senderID && dataGban[event.senderID]) ||
+          (event.userID && dataGban[event.userID])
+        ) {
+          if (event.body && event.threadID) {
+            const prefix = getPrefix(event.threadID);
+            if (event.body.startsWith(prefix)) {
+              return api.sendMessage(
+                getText("startBot", "userBanned"),
+                event.threadID
+              );
+            }
+            return;
+          } else {
+            return;
+          }
+        }
+
+        const handlerAction = require("../handler/handlerAction.js")(
+          api,
+          threadModel,
+          userModel,
+          dashBoardModel,
+          globalModel,
+          usersData,
+          threadsData,
+          dashBoardData,
+          globalData
+        );
+
+        if (hasBanned === false) {
+          handlerAction(event);
+        } else {
+          return log.err("GBAN", getText("startBot", "youAreBanned"));
+        }
+      }
+
+      function createCallBackListen(key) {
+        key = randomString(10) + (key || Date.now());
+        callbackListenTime[key] = callBackListen;
+        return function (error, event) {
+          callbackListenTime[key](error, event);
+        };
+      }
+
+      await stopListening();
+      global.GoatBot.listening = api.listenMqtt(createCallBackListen());
+      global.GoatBot.callBackListen = callBackListen;
+
+      if (
+        global.GoatBot.config.serverUptime.enable == true &&
+        !global.GoatBot.config.dashBoard?.enable &&
+        !global.serverUptimeRunning
+      ) {
+        const http = require("http");
+        const express = require("express");
+        const app = express();
+        const server = http.createServer(app);
+
+        let html = "<h1>GoatBot V2 is running!</h1>";
+        try {
+          const res = await axios.get(
+            "https://raw.githubusercontent.com/ntkhang03/resources-goat-bot/master/homepage/home.html",
+            { timeout: 5000 }
+          );
+          html = res.data;
+        } catch {
+          // Fallback HTML if GitHub raw URL 404s
+        }
+
+        const port =
+          process.env.PORT ||
+          global.GoatBot.config.dashBoard?.port ||
+          (!isNaN(global.GoatBot.config.serverUptime.port) &&
+            global.GoatBot.config.serverUptime.port) ||
+          3001;
+
+        app.get("/", (req, res) => res.send(html));
+        app.get("/uptime", global.responseUptimeCurrent);
+
+        try {
+          await server.listen(port);
+          log.info(
+            "UPTIME",
+            getText(
+              "startBot",
+              "openServerUptimeSuccess",
+              `http://localhost:${port}`
+            )
+          );
+          if (global.GoatBot.config.serverUptime.socket?.enable == true) {
+            require("./socketIO.js")(server);
+          }
+          global.serverUptimeRunning = true;
+        } catch (err) {
+          log.err("UPTIME", getText("startBot", "openServerUptimeError"), err);
+        }
+      }
+
+      if (restartListenMqtt.enable == true) {
+        if (restartListenMqtt.logNoti == true) {
+          log.info(
+            "LISTEN_MQTT",
+            getText(
+              "startBot",
+              "restartListenMessage",
+              convertTime(restartListenMqtt.timeRestart, true)
+            )
+          );
+          log.info("BOT_STARTED", getText("startBot", "startBotSuccess"));
+          logColor("#f5ab00", character);
+        }
+        const restart = setInterval(async function () {
+          if (restartListenMqtt.enable == false) {
+            clearInterval(restart);
+            return log.warn(
+              "LISTEN_MQTT",
+              getText("startBot", "stopRestartListenMessage")
+            );
+          }
+          try {
+            await stopListening();
+            await sleep(1000);
+            global.GoatBot.listening = api.listenMqtt(createCallBackListen());
+            log.info("LISTEN_MQTT", "Restarted MQTT listener successfully");
+          } catch (e) {
+            log.err(
+              "LISTEN_MQTT",
+              getText("startBot", "restartListenMessageError"),
+              e
+            );
+          }
+        }, restartListenMqtt.timeRestart);
+        global.intervalRestartListenMqtt = restart;
+      }
+
+      require("../autoUptime.js");
+    });
+  })(appState);
+
+  if (global.GoatBot.config.autoReloginWhenChangeAccount) {
+    setTimeout(function () {
+      if (!existsSync(dirAccount)) return;
+      watch(dirAccount, async (type) => {
+        if (
+          type == "change" &&
+          changeFbStateByCode == false &&
+          latestChangeContentAccount != fs.statSync(dirAccount).mtimeMs
+        ) {
+          clearInterval(global.intervalRestartListenMqtt);
+          global.compulsoryStopLisening = true;
+          latestChangeContentAccount = fs.statSync(dirAccount).mtimeMs;
+          startBot();
+        }
+      });
+    }, 10000);
+  }
+}
+
+global.GoatBot.reLoginBot = startBot;
+startBot();
