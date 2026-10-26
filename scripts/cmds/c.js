@@ -2,23 +2,18 @@ const fs = require('fs');
 const axios = require('axios');
 const path = require('path');
 
-/* ===================== CONFIG ===================== */
-const apiKey = "YOUR_COHERE_API_KEY";
+const apiKey = "COHERE_API_KEY_HERE";
 
-// Check available models with: GET https://api.cohere.com/v1/models
 const TEXT_MODEL = 'command-a-03-2025';
 const VISION_MODEL = 'command-a-vision-07-2025';
 
-// Optional: put a Tavily key here for more reliable web search.
-// Leave empty to use the keyless DuckDuckGo fallback.
-const TAVILY_API_KEY = '';
+const TAVILY_API_KEY = 'TAVILY_API_KEY_HERE';
 
 const USERS_FILE = path.join(__dirname, 'cohere.json');
-const MAX_HISTORY = 20;          // messages kept per user
-const MAX_TOOL_ROUNDS = 3;       // web-search rounds per question
-const MSG_LIMIT = 1900;          // Messenger message size limit (safe margin)
-const REPLY_TTL = 2 * 60 * 60 * 1000; // how long a bot message stays "replyable"
-/* ================================================== */
+const MAX_HISTORY = 20;         
+const MAX_TOOL_ROUNDS = 3;       
+const MSG_LIMIT = 1900;          
+const REPLY_TTL = 2 * 60 * 60 * 1000; 
 
 const COHERE_URL = 'https://api.cohere.com/v2/chat';
 const COHERE_HEADERS = {
@@ -27,8 +22,6 @@ const COHERE_HEADERS = {
 };
 
 const busy = new Set();
-
-/* ---------- storage (sync read-modify-write, atomic file replace) ---------- */
 
 function readUsers() {
   try {
@@ -49,7 +42,7 @@ function writeUsers(obj) {
 
 function getHistory(uid) {
   const h = readUsers()[uid];
-  return Array.isArray(h) ? h : []; // ignores old-format entries (conversation id strings)
+  return Array.isArray(h) ? h : []; 
 }
 
 function saveHistory(uid, history) {
@@ -68,8 +61,6 @@ function clearHistory(uid) {
   }
 }
 
-/* ---------- prompt ---------- */
-
 function buildSystemText() {
   const now = new Date().toLocaleString('en-US', {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
@@ -80,8 +71,6 @@ You help people answer their questions and other requests interactively. You wil
 ## Style Guide
 Unless asked otherwise, answer in full sentences, with proper grammar and spelling. Keep answers reasonably concise.`;
 }
-
-/* ---------- web search tool ---------- */
 
 const TOOLS = [
   {
@@ -173,8 +162,6 @@ async function runTool(name, args, sources) {
   return { error: `Unknown tool: ${name}` };
 }
 
-/* ---------- attachments ---------- */
-
 function getPhoto(event) {
   const att = event.messageReply?.attachments?.[0] || event.attachments?.[0] || null;
   if (!att || !att.url) return null;
@@ -192,8 +179,6 @@ async function toDataUrl(url, fallbackMime) {
   if (!type.startsWith('image/')) type = fallbackMime || 'image/jpeg';
   return `data:${type};base64,${Buffer.from(r.data).toString('base64')}`;
 }
-
-/* ---------- Cohere ---------- */
 
 async function postChat(body) {
   let lastErr;
@@ -229,7 +214,7 @@ async function chatV2({ prompt, uid, isOnStart, imageUrl, imageMime }) {
       image_url: { url: await toDataUrl(imageUrl, imageMime) }
     });
     model = VISION_MODEL;
-    useTools = false; // vision model: no tool use
+    useTools = false; 
   }
 
   const messages = [
@@ -277,7 +262,6 @@ async function chatV2({ prompt, uid, isOnStart, imageUrl, imageMime }) {
 
   if (!text) text = 'No response.';
 
-  // Store plain text only (no tool messages / image data) to keep history small.
   saveHistory(uid, [
     ...history,
     { role: 'user', content: imageUrl ? `[image] ${prompt}` : prompt },
@@ -290,8 +274,6 @@ async function chatV2({ prompt, uid, isOnStart, imageUrl, imageMime }) {
 
   return { text };
 }
-
-/* ---------- messaging helpers ---------- */
 
 function chunkText(text, size = MSG_LIMIT) {
   const out = [];
@@ -379,8 +361,6 @@ async function handle({ api, message, event, commandName, raw, prompt, isOnStart
     busy.delete(uid);
   }
 }
-
-/* ---------- command ---------- */
 
 module.exports = {
   config: {
