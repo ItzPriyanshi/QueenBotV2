@@ -1,277 +1,166 @@
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
+const axios = require("axios");
+const fs = require("fs-extra");
+const path = require("path");
 
-const autoDownloadStates = new Map();
-const downloadQueue = new Map();
-const userDownloadLimits = new Map();
+const SETTINGS_PATH = path.join(__dirname, "autolink_settings.json");
+const CACHE_DIR = path.join(__dirname, "cache");
 
-const supportedPlatforms = {
-    youtube: /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu\.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/,
-    facebook: /^(https?:\/\/)?(www\.)?(facebook|fb)\.(com|watch)\/.*$/,
-    instagram: /^(https?:\/\/)?(www\.)?(instagram\.com|instagr\.am)\/(?:p|reel)\/([A-Za-z0-9\-_]+)/,
-    tiktok: /^(https?:\/\/)?(www\.)?(tiktok\.com)\/.*\/video\/(\d+)/,
-    twitter: /^(https?:\/\/)?(www\.)?(twitter\.com|x\.com)\/\w+\/status\/\d+/
+const BASE_INSTA_API = "http://meow-dl.onrender.com";
+const INSTA_ENDPOINT = "/instav2";
+const BASE_GLOBAL_API = "https://nayan-video-downloader.vercel.app/alldown";
+
+if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR);
+
+const getSettings = () => {
+    if (!fs.existsSync(SETTINGS_PATH)) fs.writeFileSync(SETTINGS_PATH, JSON.stringify({ enabled: true }));
+    return JSON.parse(fs.readFileSync(SETTINGS_PATH));
 };
 
-const HOURLY_LIMIT = 25;
-const GROUP_SETTINGS_FILE = 'group_download_settings.json';
+const saveSettings = (settings) => {
+    fs.writeFileSync(SETTINGS_PATH, JSON.stringify(settings));
+};
 
-function loadGroupSettings() {
+const fetchInstagramMedia = async (targetUrl) => {
     try {
-        if (fs.existsSync(GROUP_SETTINGS_FILE)) {
-            return JSON.parse(fs.readFileSync(GROUP_SETTINGS_FILE, 'utf8'));
-        }
-    } catch (error) {}
-    return {};
-}
-
-function saveGroupSettings(settings) {
-    fs.writeFileSync(GROUP_SETTINGS_FILE, JSON.stringify(settings, null, 2));
-}
-
-function checkRateLimit(userId) {
-    const now = Date.now();
-    const userLimit = userDownloadLimits.get(userId) || { count: 0, timestamp: now };
-
-    if (now - userLimit.timestamp > 3600000) {
-        userDownloadLimits.set(userId, { count: 1, timestamp: now });
-        return true;
-    }
-
-    if (userLimit.count >= HOURLY_LIMIT) return false;
-
-    userLimit.count++;
-    userDownloadLimits.set(userId, userLimit);
-    return true;
-}
-
-function extractValidUrls(text) {
-    const urls = [];
-    for (const [platform, regex] of Object.entries(supportedPlatforms)) {
-        const matches = text.matchAll(new RegExp(regex, 'g'));
-        for (const match of matches) {
-            urls.push({ url: match[0], platform });
-        }
-    }
-    return urls;
-}
-
-async function getVideoData(url) {
-    try {
-        const encodedUrl = encodeURIComponent(url);
-        const response = await axios.get(`https://dev-priyanshi.onrender.com/api/alldl?url=${encodedUrl}`, {
-            timeout: 30000, // 30 second timeout
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-        });
-
-        if (!response.data.status || !response.data.data) {
-            throw new Error('Invalid API response');
-        }
-
-        const data = response.data.data;
+        const { data } = await axios.get(`${BASE_INSTA_API}${INSTA_ENDPOINT}?url=${encodeURIComponent(targetUrl)}`);
         
-        // Always prefer high quality, fallback to low if high not available
-        const downloadUrl = data.high || data.low;
+        if (data?.status !== "success") {
+            const error = new Error("API_ERR_101: Unsuccessful response status from Instagram API.");
+            error.code = "API_ERR_101";
+            throw error;
+        }
         
-        if (!downloadUrl) {
-            throw new Error('No download URL found');
+        if (!data?.media || !data.media.length) {
+            const error = new Error("API_ERR_102: No media array found in Instagram API payload.");
+            error.code = "API_ERR_102";
+            throw error;
+        }
+
+        const videoMedia = data.media.find(m => m.type === "video") || data.media[0];
+        
+        if (!videoMedia || !videoMedia.url) {
+            const error = new Error("API_ERR_103: Video URL missing from the extracted media object.");
+            error.code = "API_ERR_103";
+            throw error;
         }
 
         return {
-            title: data.title || 'Video',
-            thumbnail: data.thumbnail,
-            downloadUrl: downloadUrl,
-            quality: data.high ? 'High' : 'Low'
+            url: videoMedia.url,
+            title: data.title || "Instagram Content"
         };
-    } catch (error) {
-        throw new Error(`Failed to get video data: ${error.message}`);
+    } catch (err) {
+        if (!err.code) {
+            err.code = "NET_ERR_100";
+            err.message = `Network or parse error on Instagram API: ${err.message}`;
+        }
+        throw err;
     }
-}
+};
 
-async function downloadVideo(videoData, api, event) {
+const fetchGlobalMedia = async (targetUrl) => {
     try {
-        const videoPath = path.join(__dirname, `temp_video_${event.threadID}_${Date.now()}.mp4`);
+        const { data } = await axios.get(`${BASE_GLOBAL_API}?url=${encodeURIComponent(targetUrl)}`);
+        
+        if (!data?.status) {
+            const error = new Error("API_ERR_201: Unsuccessful response status from Global API.");
+            error.code = "API_ERR_201";
+            throw error;
+        }
 
-        const videoResponse = await axios({
-            url: videoData.downloadUrl,
-            method: 'GET',
-            responseType: 'stream',
-            timeout: 60000, // 60 second timeout for download
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-        });
+        if (!data?.data?.high) {
+            const error = new Error("API_ERR_202: High-quality media URL missing in Global API payload.");
+            error.code = "API_ERR_202";
+            throw error;
+        }
 
-        const writer = fs.createWriteStream(videoPath);
-        videoResponse.data.pipe(writer);
-
-        return new Promise((resolve, reject) => {
-            writer.on('finish', () => resolve(videoPath));
-            writer.on('error', reject);
-            
-            // Add timeout for write operation
-            setTimeout(() => {
-                writer.destroy();
-                reject(new Error('Download timeout'));
-            }, 120000); // 2 minute timeout
-        });
-    } catch (error) {
-        throw new Error(`Download failed: ${error.message}`);
+        return {
+            url: data.data.high,
+            title: data.data.title || "Video Content"
+        };
+    } catch (err) {
+        if (!err.code) {
+            err.code = "NET_ERR_200";
+            err.message = `Network or parse error on Global API: ${err.message}`;
+        }
+        throw err;
     }
-}
+};
 
 module.exports = {
     config: {
         name: "autolink",
-        version: "3.0",
+        version: "2.2.0",
         author: "Priyanshi Kaur",
-        countDown: 5,
+        countDown: 2,
         role: 0,
-        shortDescription: "Auto video downloader",
-        longDescription: "Automatically detects and downloads videos from supported platforms with high quality",
-        category: "Media",
+        description: {
+            en: "Automatically download videos from Instagram, Facebook, TikTok, YouTube Shorts, Pinterest, and X (Twitter).",
+        },
+        category: "MEDIA",
         guide: {
-            en: "{prefix}autolink on/off/status - Enable/disable auto download or check status"
+            en: "{prefix}autolink on/off",
+        },
+    },
+
+    onStart: async function ({ api, args, event }) {
+        const settings = getSettings();
+        if (args[0] === "on") {
+            settings.enabled = true;
+            saveSettings(settings);
+            return api.sendMessage("✅ Auto-download is now ON.", event.threadID, event.messageID);
+        } else if (args[0] === "off") {
+            settings.enabled = false;
+            saveSettings(settings);
+            return api.sendMessage("❌ Auto-download is now OFF.", event.threadID, event.messageID);
+        } else {
+            return api.sendMessage(`⚙️ Current status: ${settings.enabled ? "ON ✅" : "OFF ❌"}`, event.threadID, event.messageID);
         }
     },
 
-    onStart: async function ({ api, args, message, event }) {
-        const threadID = event.threadID;
-        const settings = loadGroupSettings();
+    onChat: async function ({ api, event }) {
+        const settings = getSettings();
+        if (!settings.enabled || !event.body) return;
 
-        if (!args[0] || !['on', 'off', 'status'].includes(args[0].toLowerCase())) {
-            return message.reply(
-                "📱 Autolink Commands:\n" +
-                "• `autolink on` - Enable auto download\n" +
-                "• `autolink off` - Disable auto download\n" +
-                "• `autolink status` - Check current status\n\n" +
-                "🎥 Supported platforms: " + Object.keys(supportedPlatforms).join(', ')
-            );
-        }
+        const linkRegex = /(https?:\/\/(?:www\.)?(?:instagram\.com|facebook\.com|tiktok\.com|pinterest\.com|x\.com|twitter\.com|youtube\.com|youtu\.be)\/[^\s]+)/g;
+        const matches = event.body.match(linkRegex);
+        if (!matches) return;
 
-        const command = args[0].toLowerCase();
-
-        if (command === 'status') {
-            const status = settings[threadID] ? 'enabled' : 'disabled';
-            const limits = userDownloadLimits.get(event.senderID) || { count: 0 };
-            const resetTime = new Date(Date.now() + 3600000).toLocaleTimeString();
-            
-            return message.reply(
-                `📊 Auto Download Status:\n` +
-                `➤ Current state: ${status}\n` +
-                `➤ Your downloads: ${limits.count}/${HOURLY_LIMIT} (resets at ${resetTime})\n` +
-                `➤ Quality: High (when available)\n` +
-                `➤ Supported: ${Object.keys(supportedPlatforms).join(', ')}\n\n` +
-                `💡 Just send any supported video link to auto-download!`
-            );
-        }
-
-        settings[threadID] = command === 'on';
-        saveGroupSettings(settings);
-
-        const statusEmoji = command === 'on' ? '✅' : '❌';
-        const statusText = command === 'on' ? 'enabled' : 'disabled';
+        const targetUrl = matches[0];
+        const isInstagram = targetUrl.includes("instagram.com");
         
-        return message.reply(
-            `${statusEmoji} Auto download ${statusText} for this chat!\n\n` +
-            (command === 'on' ? 
-                `🎯 Send any video link from: ${Object.keys(supportedPlatforms).join(', ')}\n` +
-                `⚡ Downloads will be in high quality automatically!` :
-                `💤 Auto download is now disabled.`
-            )
-        );
-    },
+        api.setMessageReaction("⏳", event.messageID, () => {}, true);
+        const startTime = Date.now();
 
-    onChat: async function ({ api, message, event }) {
-        const settings = loadGroupSettings();
-        if (!settings[event.threadID]) return;
+        try {
+            const mediaData = isInstagram 
+                ? await fetchInstagramMedia(targetUrl) 
+                : await fetchGlobalMedia(targetUrl);
 
-        const text = event.body || '';
-        const urls = extractValidUrls(text);
+            const responseTime = (Date.now() - startTime).toFixed(2);
+            
+            const { data: videoBuffer } = await axios.get(mediaData.url, { responseType: "arraybuffer" });
+            const filePath = path.join(CACHE_DIR, `video_${Date.now()}.mp4`);
+            
+            fs.writeFileSync(filePath, Buffer.from(videoBuffer));
+            const fileSize = (fs.statSync(filePath).size / (1024 * 1024)).toFixed(2);
 
-        if (urls.length === 0) return;
-
-        // Check rate limit
-        if (!checkRateLimit(event.senderID)) {
-            const resetTime = new Date(Date.now() + 3600000).toLocaleTimeString();
-            return message.reply(
-                `⚠️ Rate limit reached!\n` +
-                `➤ Limit: ${HOURLY_LIMIT} downloads per hour\n` +
-                `➤ Resets at: ${resetTime}\n\n` +
-                `💡 This prevents API abuse and ensures service stability.`
+            api.setMessageReaction("✅", event.messageID, () => {}, true);
+            api.sendMessage(
+                {
+                    body: `🎬 Video Downloaded Successfully!\n\n📌 Title: ${mediaData.title}\n🌐 Platform: ${new URL(targetUrl).hostname}\n⏱️ API Response Time: ${responseTime}ms\n💾 Video Size: ${fileSize} MB`,
+                    attachment: fs.createReadStream(filePath),
+                },
+                event.threadID,
+                () => fs.unlinkSync(filePath),
+                event.messageID
             );
+        } catch (error) {
+            api.setMessageReaction("❌", event.messageID, () => {}, true);
+            
+            const errorCode = error.code || "SYS_ERR_000";
+            const errorMessage = error.message || "An unexpected system error occurred.";
+            
+            api.sendMessage(`🚫 Download failed.\n💬 Error [${errorCode}]: ${errorMessage}`, event.threadID, event.messageID);
         }
-
-        // Process each URL found
-        for (const { url, platform } of urls) {
-            const threadQueue = downloadQueue.get(event.threadID) || new Set();
-
-            // Skip if already processing this URL
-            if (threadQueue.has(url)) continue;
-            threadQueue.add(url);
-            downloadQueue.set(event.threadID, threadQueue);
-
-            try {
-                // Show processing reaction
-                api.setMessageReaction("⏳", event.messageID, () => {}, true);
-
-                // Get video metadata and download URL
-                const videoData = await getVideoData(url);
-                
-                // Download the video
-                const videoPath = await downloadVideo(videoData, api, event);
-
-                // Prepare message with video info
-                const messageBody = 
-                    `🎥 Auto-Downloaded Video\n` +
-                    `➤ Platform: ${platform.charAt(0).toUpperCase() + platform.slice(1)}\n` +
-                    `➤ Title: ${videoData.title}\n` +
-                    `➤ Quality: ${videoData.quality}\n` +
-                    `➤ Original: ${url}`;
-
-                // Send video with metadata
-                await api.sendMessage(
-                    {
-                        body: messageBody,
-                        attachment: fs.createReadStream(videoPath)
-                    },
-                    event.threadID,
-                    (err, info) => {
-                        // Cleanup
-                        try {
-                            fs.unlinkSync(videoPath);
-                        } catch (cleanupError) {
-                            console.error('Cleanup error:', cleanupError);
-                        }
-                        
-                        threadQueue.delete(url);
-                        
-                        if (!err) {
-                            api.setMessageReaction("✅", event.messageID, () => {}, true);
-                        } else {
-                            api.setMessageReaction("❌", event.messageID, () => {}, true);
-                        }
-                    }
-                );
-
-            } catch (error) {
-                console.error(`Download error for ${url}:`, error.message);
-                
-                // Clean up queue and show error
-                threadQueue.delete(url);
-                api.setMessageReaction("❌", event.messageID, () => {}, true);
-                
-                // Send error message (optional, can be removed to avoid spam)
-                message.reply(
-                    `❌ Download failed for ${platform}\n` +
-                    `➤ Error: ${error.message}\n` +
-                    `➤ URL: ${url}\n\n` +
-                    `💡 This might be due to: private content, expired link, or API issues.`
-                );
-            }
-        }
-    }
+    },
 };
